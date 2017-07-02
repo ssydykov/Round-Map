@@ -9,25 +9,28 @@
 /* Begin PBXBuildFile section */
 		546ABD311F06C820002F69A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD301F06C820002F69A7 /* AppDelegate.swift */; };
 		546ABD331F06C820002F69A7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD321F06C820002F69A7 /* GameScene.sks */; };
-		546ABD351F06C820002F69A7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD341F06C820002F69A7 /* Actions.sks */; };
 		546ABD371F06C820002F69A7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD361F06C820002F69A7 /* GameScene.swift */; };
 		546ABD391F06C820002F69A7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD381F06C820002F69A7 /* GameViewController.swift */; };
 		546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3A1F06C820002F69A7 /* Main.storyboard */; };
 		546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3D1F06C820002F69A7 /* Assets.xcassets */; };
 		546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */; };
+		546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD491F06C8FE002F69A7 /* Assets.xcassets */; };
+		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		546ABD2D1F06C820002F69A7 /* Math Tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Math Tetris.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		546ABD301F06C820002F69A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546ABD321F06C820002F69A7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		546ABD341F06C820002F69A7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		546ABD361F06C820002F69A7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		546ABD381F06C820002F69A7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		546ABD3B1F06C820002F69A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		546ABD3D1F06C820002F69A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		546ABD401F06C820002F69A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		546ABD421F06C820002F69A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		546ABD491F06C8FE002F69A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +47,10 @@
 		546ABD241F06C820002F69A7 = {
 			isa = PBXGroup;
 			children = (
+				546ABD491F06C8FE002F69A7 /* Assets.xcassets */,
 				546ABD2F1F06C820002F69A7 /* Math Tetris */,
 				546ABD2E1F06C820002F69A7 /* Products */,
+				5489065D1F0708F5002E6E47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,8 +67,8 @@
 			children = (
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
 				546ABD321F06C820002F69A7 /* GameScene.sks */,
-				546ABD341F06C820002F69A7 /* Actions.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
+				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
 				546ABD381F06C820002F69A7 /* GameViewController.swift */,
 				546ABD3A1F06C820002F69A7 /* Main.storyboard */,
 				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
@@ -71,6 +76,14 @@
 				546ABD421F06C820002F69A7 /* Info.plist */,
 			);
 			path = "Math Tetris";
+			sourceTree = "<group>";
+		};
+		5489065D1F0708F5002E6E47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5489065E1F0708F5002E6E47 /* CoreMotion.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +149,8 @@
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
 				546ABD331F06C820002F69A7 /* GameScene.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
+				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
-				546ABD351F06C820002F69A7 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +164,7 @@
 				546ABD371F06C820002F69A7 /* GameScene.swift in Sources */,
 				546ABD391F06C820002F69A7 /* GameViewController.swift in Sources */,
 				546ABD311F06C820002F69A7 /* AppDelegate.swift in Sources */,
+				548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +328,7 @@
 				546ABD471F06C820002F69A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
