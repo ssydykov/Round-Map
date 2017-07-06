@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		546868DD1F0AAC6F00565334 /* Exit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DC1F0AAC6F00565334 /* Exit.sks */; };
+		546868DF1F0D49E000565334 /* Circle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DE1F0D49E000565334 /* Circle.sks */; };
+		546868E31F0D864600565334 /* EndDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868E21F0D864600565334 /* EndDialog.sks */; };
 		546ABD311F06C820002F69A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD301F06C820002F69A7 /* AppDelegate.swift */; };
-		546ABD331F06C820002F69A7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD321F06C820002F69A7 /* GameScene.sks */; };
+		546ABD331F06C820002F69A7 /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD321F06C820002F69A7 /* Level_1.sks */; };
 		546ABD371F06C820002F69A7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD361F06C820002F69A7 /* GameScene.swift */; };
 		546ABD391F06C820002F69A7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546ABD381F06C820002F69A7 /* GameViewController.swift */; };
 		546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3A1F06C820002F69A7 /* Main.storyboard */; };
 		546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3D1F06C820002F69A7 /* Assets.xcassets */; };
 		546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */; };
 		546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD491F06C8FE002F69A7 /* Assets.xcassets */; };
+		546AD13C1F0DAEC800C33600 /* Star.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD13B1F0DAEC800C33600 /* Star.sks */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		546868DC1F0AAC6F00565334 /* Exit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exit.sks; sourceTree = "<group>"; };
+		546868DE1F0D49E000565334 /* Circle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Circle.sks; sourceTree = "<group>"; };
+		546868E21F0D864600565334 /* EndDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndDialog.sks; sourceTree = "<group>"; };
 		546ABD2D1F06C820002F69A7 /* Math Tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Math Tetris.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		546ABD301F06C820002F69A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		546ABD321F06C820002F69A7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		546ABD321F06C820002F69A7 /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
 		546ABD361F06C820002F69A7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		546ABD381F06C820002F69A7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		546ABD3B1F06C820002F69A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,6 +36,7 @@
 		546ABD401F06C820002F69A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		546ABD421F06C820002F69A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		546ABD491F06C8FE002F69A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		546AD13B1F0DAEC800C33600 /* Star.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Star.sks; sourceTree = "<group>"; };
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,12 +74,16 @@
 			isa = PBXGroup;
 			children = (
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
-				546ABD321F06C820002F69A7 /* GameScene.sks */,
+				546ABD321F06C820002F69A7 /* Level_1.sks */,
+				546868DE1F0D49E000565334 /* Circle.sks */,
+				546AD13B1F0DAEC800C33600 /* Star.sks */,
+				546868E21F0D864600565334 /* EndDialog.sks */,
+				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
+				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
 				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
 				546ABD381F06C820002F69A7 /* GameViewController.swift */,
 				546ABD3A1F06C820002F69A7 /* Main.storyboard */,
-				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
 				546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */,
 				546ABD421F06C820002F69A7 /* Info.plist */,
 			);
@@ -146,9 +158,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546868DF1F0D49E000565334 /* Circle.sks in Resources */,
+				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
-				546ABD331F06C820002F69A7 /* GameScene.sks in Resources */,
+				546ABD331F06C820002F69A7 /* Level_1.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
+				546868DD1F0AAC6F00565334 /* Exit.sks in Resources */,
+				546AD13C1F0DAEC800C33600 /* Star.sks in Resources */,
 				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
 			);
