@@ -19,6 +19,9 @@
 		546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */; };
 		546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546ABD491F06C8FE002F69A7 /* Assets.xcassets */; };
 		546AD13C1F0DAEC800C33600 /* Star.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD13B1F0DAEC800C33600 /* Star.sks */; };
+		546AD1401F0E998200C33600 /* Obstacle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD13F1F0E998200C33600 /* Obstacle.sks */; };
+		546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD1411F0EA5B600C33600 /* Level_2.sks */; };
+		546AD1441F0EA69F00C33600 /* Key.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD1431F0EA69F00C33600 /* Key.sks */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		546ABD421F06C820002F69A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		546ABD491F06C8FE002F69A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		546AD13B1F0DAEC800C33600 /* Star.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Star.sks; sourceTree = "<group>"; };
+		546AD13F1F0E998200C33600 /* Obstacle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Obstacle.sks; sourceTree = "<group>"; };
+		546AD1411F0EA5B600C33600 /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
+		546AD1431F0EA69F00C33600 /* Key.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Key.sks; sourceTree = "<group>"; };
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,8 +81,11 @@
 			children = (
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
 				546ABD321F06C820002F69A7 /* Level_1.sks */,
+				546AD1411F0EA5B600C33600 /* Level_2.sks */,
 				546868DE1F0D49E000565334 /* Circle.sks */,
+				546AD13F1F0E998200C33600 /* Obstacle.sks */,
 				546AD13B1F0DAEC800C33600 /* Star.sks */,
+				546AD1431F0EA69F00C33600 /* Key.sks */,
 				546868E21F0D864600565334 /* EndDialog.sks */,
 				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
@@ -158,8 +167,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546AD1401F0E998200C33600 /* Obstacle.sks in Resources */,
 				546868DF1F0D49E000565334 /* Circle.sks in Resources */,
 				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
+				546AD1441F0EA69F00C33600 /* Key.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
 				546ABD331F06C820002F69A7 /* Level_1.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
@@ -167,6 +178,7 @@
 				546AD13C1F0DAEC800C33600 /* Star.sks in Resources */,
 				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
+				546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
