@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5413837F1F10333B005D982C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5413837E1F10333B005D982C /* Level.swift */; };
+		541383811F103919005D982C /* Levels.sks in Resources */ = {isa = PBXBuildFile; fileRef = 541383801F103919005D982C /* Levels.sks */; };
+		541383831F103A4B005D982C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541383821F103A4B005D982C /* MainMenu.swift */; };
 		546868DD1F0AAC6F00565334 /* Exit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DC1F0AAC6F00565334 /* Exit.sks */; };
 		546868DF1F0D49E000565334 /* Circle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DE1F0D49E000565334 /* Circle.sks */; };
 		546868E31F0D864600565334 /* EndDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868E21F0D864600565334 /* EndDialog.sks */; };
@@ -22,10 +25,16 @@
 		546AD1401F0E998200C33600 /* Obstacle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD13F1F0E998200C33600 /* Obstacle.sks */; };
 		546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD1411F0EA5B600C33600 /* Level_2.sks */; };
 		546AD1441F0EA69F00C33600 /* Key.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD1431F0EA69F00C33600 /* Key.sks */; };
+		547D629D1F0FF9A9001CECE1 /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547D629C1F0FF9A9001CECE1 /* Level_3.sks */; };
+		547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547D629E1F10287C001CECE1 /* MainMenu.sks */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
+		549B46D11F103FEF001953FF /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B46D01F103FEF001953FF /* Levels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5413837E1F10333B005D982C /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		541383801F103919005D982C /* Levels.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Levels.sks; sourceTree = "<group>"; };
+		541383821F103A4B005D982C /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		546868DC1F0AAC6F00565334 /* Exit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exit.sks; sourceTree = "<group>"; };
 		546868DE1F0D49E000565334 /* Circle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Circle.sks; sourceTree = "<group>"; };
 		546868E21F0D864600565334 /* EndDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndDialog.sks; sourceTree = "<group>"; };
@@ -43,8 +52,11 @@
 		546AD13F1F0E998200C33600 /* Obstacle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Obstacle.sks; sourceTree = "<group>"; };
 		546AD1411F0EA5B600C33600 /* Level_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_2.sks; sourceTree = "<group>"; };
 		546AD1431F0EA69F00C33600 /* Key.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Key.sks; sourceTree = "<group>"; };
+		547D629C1F0FF9A9001CECE1 /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
+		547D629E1F10287C001CECE1 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		549B46D01F103FEF001953FF /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
+				547D629E1F10287C001CECE1 /* MainMenu.sks */,
+				541383801F103919005D982C /* Levels.sks */,
 				546ABD321F06C820002F69A7 /* Level_1.sks */,
 				546AD1411F0EA5B600C33600 /* Level_2.sks */,
+				547D629C1F0FF9A9001CECE1 /* Level_3.sks */,
 				546868DE1F0D49E000565334 /* Circle.sks */,
 				546AD13F1F0E998200C33600 /* Obstacle.sks */,
 				546AD13B1F0DAEC800C33600 /* Star.sks */,
@@ -89,9 +104,12 @@
 				546868E21F0D864600565334 /* EndDialog.sks */,
 				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
-				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
-				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
+				541383821F103A4B005D982C /* MainMenu.swift */,
+				549B46D01F103FEF001953FF /* Levels.swift */,
+				5413837E1F10333B005D982C /* Level.swift */,
 				546ABD381F06C820002F69A7 /* GameViewController.swift */,
+				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
+				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
 				546ABD3A1F06C820002F69A7 /* Main.storyboard */,
 				546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */,
 				546ABD421F06C820002F69A7 /* Info.plist */,
@@ -172,6 +190,7 @@
 				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
 				546AD1441F0EA69F00C33600 /* Key.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
+				547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */,
 				546ABD331F06C820002F69A7 /* Level_1.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
 				546868DD1F0AAC6F00565334 /* Exit.sks in Resources */,
@@ -179,6 +198,8 @@
 				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
 				546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */,
+				547D629D1F0FF9A9001CECE1 /* Level_3.sks in Resources */,
+				541383811F103919005D982C /* Levels.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,8 +211,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				546ABD371F06C820002F69A7 /* GameScene.swift in Sources */,
+				549B46D11F103FEF001953FF /* Levels.swift in Sources */,
+				541383831F103A4B005D982C /* MainMenu.swift in Sources */,
 				546ABD391F06C820002F69A7 /* GameViewController.swift in Sources */,
 				546ABD311F06C820002F69A7 /* AppDelegate.swift in Sources */,
+				5413837F1F10333B005D982C /* Level.swift in Sources */,
 				548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

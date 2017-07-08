@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var keySprite: SKSpriteNode!
     var teleport1: SKSpriteNode?
     var teleport2: SKSpriteNode?
+    var obstacle: SKSpriteNode?
     
     // Buttons
     var nextLevelButton: MSButtonNode!
@@ -37,9 +38,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Booleans
     var onTouch: Bool = false
     var onTeleport: Bool = true
+    var isInTimer: Bool = false
     
     // Variables
     var score: Int = 0
+    var timer = Timer()
     
     override func didMove(to view: SKView) {
         
@@ -63,9 +66,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         restartButton = childNode(withName: "//restartButton") as! MSButtonNode
         teleport1 = childNode(withName: "//teleport1") as? SKSpriteNode
         teleport2 = childNode(withName: "//teleport2") as? SKSpriteNode
+        obstacle = childNode(withName: "//obstacle") as? SKSpriteNode
+        
+        // Call timer for flashing obstacle if it is in the scene
+        if obstacle != nil {
+            
+            scheduledTimerWithTimeInterval()
+        }
         
         // Check is it key in the scene
-        
         if (key == nil){
             
             print("key node is not in the scene")
@@ -158,6 +167,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+    }
+    
+    // Recursive function for hideUnhide method
+    func scheduledTimerWithTimeInterval(){
+    
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(self.hideUnhideNode), userInfo: nil, repeats: true)
+    }
+    
+    // Hide or unhide node
+    func hideUnhideNode() {
+        
+        if obstacle!.isHidden {
+            
+            obstacle!.isHidden = false
+        }
+        else {
+            
+            obstacle!.isHidden = true
+        }
     }
     
     // Some two objects colliding
@@ -193,7 +222,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // If circle collides with obstale
 
-        else if nodeA.name == "obstacle" || nodeB.name == "obstacle" {
+        else if ((nodeA.name == "obstacle" || nodeB.name == "obstacle") && !obstacle!.isHidden) ||
+            (nodeA.name == "end" || nodeB.name == "end"){
             
             print("Hits obstacle")
             
