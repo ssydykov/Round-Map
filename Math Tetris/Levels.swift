@@ -50,18 +50,18 @@ class Levels: SKScene {
                 
                 levels = storedData
                 
-                print("There are some list of levels")
+                print(storedData[0].status)
             }
         }
         
         // If game was opened first time
         else {
-            
+        
+            // Set first level is opened by default
+            let level1 = Level(0, "Level 1", true, 0, "")
+            levels.append(level1)
+        
             for item in 1...numberOfLevels {
-                
-                // Set first level is opened by default
-                let level1 = Level(0, "Level 1", true, 0, "0")
-                levels.append(level1)
                 
                 // Set other levels as closed
                 levels.append(Level(item, "Level \(item + 1)", false, 0, "0"))
@@ -84,7 +84,48 @@ class Levels: SKScene {
         for item in 0...numberOfLevels {
             
             let listItem = self.childNode(withName: "//Level \(item)") as! SKShapeNode
-            print(listItem.fillColor)
+            
+            // Print level label and their status
+            print("Label: \(levels[item].label), status: \(levels[item].status)")
+            
+            let status = levels[item].status
+            let time = levels[item].time
+            
+            if status {
+                
+                if time != "" {
+                    
+                    listItem.strokeColor = UIColor.green
+                }
+                else {
+                    
+                    listItem.strokeColor = UIColor.orange
+                }
+            }
+            else {
+                
+                listItem.strokeColor = UIColor.red
+            }
         }
     }
+    
+    // Calls when touch begins
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//        let touch = touches.first!
+//        let location = touch.location(in: self)
+//        let nodeAtPoint = atPoint(location)
+//        
+//        onTouch = true
+//        
+//        // Touch control logic
+//        
+//        if nodeAtPoint.name == "leftButton" {
+//            
+//            map.removeAllActions()
+//            let action = SKAction.rotate(byAngle: CGFloat(Double.pi * 20), duration: 60.0)
+//            map.run(action)
+//            
+//        }
+//    }
 }

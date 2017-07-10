@@ -4,7 +4,7 @@ class Level: NSObject, NSCoding {
     
     var id: Int = 0
     var label: String = ""
-    var status: Bool = false
+    var status: Bool = true
     var stars: Int = 0
     var time: String = ""
     
@@ -25,7 +25,7 @@ class Level: NSObject, NSCoding {
         self.init()
         self.id = decoder.decodeInteger(forKey: "id")
         self.label = decoder.decodeObject(forKey: "label") as! String
-        self.status = decoder.decodeBool(forKey: "bool")
+        self.status = decoder.decodeBool(forKey: "status")
         self.stars = decoder.decodeInteger(forKey: "stars")
         self.time = decoder.decodeObject(forKey: "time") as! String
     }
