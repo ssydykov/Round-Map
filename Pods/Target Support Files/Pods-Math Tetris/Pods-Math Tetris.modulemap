@@ -1,0 +1,6 @@
+framework module Pods_Math_Tetris {
+  umbrella header "Pods-Math Tetris-umbrella.h"
+
+  export *
+  module * { export * }
+}

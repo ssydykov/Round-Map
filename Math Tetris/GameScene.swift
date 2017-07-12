@@ -9,9 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-// Global Variables
-var currentLevel: Int = 1
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Nodes
@@ -34,6 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // UI Labels
     var scoreLabel: SKLabelNode!
     var exitLabel: SKLabelNode!
+    var liveNumberLabel: SKLabelNode!
+    var liveStatusLabel: SKLabelNode!
     
     // Booleans
     var onTouch: Bool = false
@@ -48,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         /* Set physics contact delegate */
         physicsWorld.contactDelegate = self
+        
         
         // Initiate variables
         
@@ -67,6 +67,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         teleport1 = childNode(withName: "//teleport1") as? SKSpriteNode
         teleport2 = childNode(withName: "//teleport2") as? SKSpriteNode
         obstacle = childNode(withName: "//obstacle") as? SKSpriteNode
+        liveNumberLabel = childNode(withName: "//liveNumber") as! SKLabelNode
+        liveStatusLabel = childNode(withName: "//liveStatus") as! SKLabelNode
+        
+        // Get current lives
+//        liveNumber = UserDefaults.standard.integer(forKey: "lives")
+        
+        // Set lives number label
+        print("Live number is \(lives)")
+        liveNumberLabel.text = String(lives)
+        
+        if (lives < 5){
+            
+            print("Live number is less 5")
+            
+        } else {
+            
+            // Set lives
+            liveStatusLabel.text = "FULL"
+        }
         
         // Call timer for flashing obstacle if it is in the scene
         if obstacle != nil {
@@ -167,6 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    
         
     }
     
@@ -207,7 +227,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             exitLabel.text != "Closed"){
             
             print("Exit is collide")
-
+            
+            // Unlock next level and save current level result in data
+            let passLevel = Level(currentLevel, "Level \(currentLevel + 1)", true, score, "1.00")
+            let nextLevel = Level(currentLevel + 1, "Level \(currentLevel + 2)", true, 0, "")
+            var levels: Array<Level> = []
+            
+            // Get stored levels
+            if let data = UserDefaults.standard.object(forKey: "levels") as? Data {
+                if let storedData = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Level] {
+                    
+                    print("Pass level = \(storedData[currentLevel])")
+                    
+                    levels = storedData
+                }
+            }
+            
+            levels[currentLevel] = passLevel
+            levels[currentLevel + 1] = nextLevel
+            
+            // Update level
+            let levelsData = NSKeyedArchiver.archivedData(withRootObject: levels)
+            UserDefaults.standard.set(levelsData, forKey: "levels")
+            UserDefaults.standard.synchronize()
+            
+            print("Levels are updated")
+            
             // Show dialog
             endDialog.zPosition = 5
             
@@ -227,13 +272,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             print("Hits obstacle")
             
-            guard let scene = GameScene.loadLevel(currentLevel) else {
+            // Live --
+            lives -= 1
+            
+            // Set lives number
+            UserDefaults.standard.set(lives, forKey: "lives")
+            
+            if lives > 0 {
                 
-                print ("Level is missing?")
-                return
+                print("Start level \(currentLevel + 1) again")
+                
+                // Start level again
+                guard let scene = GameScene.loadLevel(currentLevel) else {
+                    
+                    print ("Level is missing?")
+                    return
+                }
+                self.view?.presentScene(scene)
+                
+            } else {
+                
+                print("Start levels scene")
+                
+                // Show levels scene
+                self.loadScene("Levels")
             }
             
-            self.view?.presentScene(scene)
         }
         
         // If circle collides with star
@@ -336,6 +400,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scene.scaleMode = .aspectFill
         return scene
+    }
+    
+    // Load any scene
+    func loadScene(_ sceneName: String){
+        
+        print("Load scene")
+        
+        // Grab reference to out Sprite Kit view
+        guard let skView = self.view as SKView! else {
+            
+            print ("Couldn't get SKVeiw")
+            return
+        }
+        
+        // Load game scene
+        guard let scene = GameScene(fileNamed: sceneName) else {
+            
+            print("Could not make GameScene, check the name is spelled correctly")
+            return
+        }
+        
+        // Start game scene
+        scene.scaleMode = .aspectFill
+        skView.presentScene(scene)
+        
     }
     
     // Round map

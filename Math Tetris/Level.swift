@@ -2,12 +2,14 @@ import Foundation
 
 class Level: NSObject, NSCoding {
     
+    // Fields
     var id: Int = 0
     var label: String = ""
     var status: Bool = true
     var stars: Int = 0
     var time: String = ""
     
+    // Constructor
     init(_ id: Int, _ label: String, _ status: Bool, _ stars: Int, _ time: String) {
         
         self.id = id
@@ -17,10 +19,12 @@ class Level: NSObject, NSCoding {
         self.time = time
     }
     
+    // Empty constructor
     override init() {
         
     }
     
+    // Decoder
     required convenience init?(coder decoder: NSCoder) {
         self.init()
         self.id = decoder.decodeInteger(forKey: "id")
@@ -30,6 +34,7 @@ class Level: NSObject, NSCoding {
         self.time = decoder.decodeObject(forKey: "time") as! String
     }
     
+    // Encoder
     func encode(with coder: NSCoder) {
         coder.encode(self.id, forKey: "id")
         coder.encode(self.label, forKey: "label")
