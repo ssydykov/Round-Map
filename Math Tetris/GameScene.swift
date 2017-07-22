@@ -16,17 +16,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightButton: SKSpriteNode!
     var map: SKSpriteNode!
     var endDialog: SKSpriteNode!
+    var pauseDialog: SKSpriteNode!
     var circle: SKSpriteNode!
     var key: SKSpriteNode?
-    var keySprite: SKSpriteNode!
+    var keySprite: SKSpriteNode?
     var teleport1: SKSpriteNode?
     var teleport2: SKSpriteNode?
     var obstacle: SKSpriteNode?
+    var shieldLine: SKSpriteNode?
+    var shieldTimeline: SKSpriteNode?
+    var needles: SKSpriteNode?
     
     // Buttons
     var nextLevelButton: MSButtonNode!
     var menuButton: MSButtonNode!
     var restartButton: MSButtonNode!
+    var exitButton: MSButtonNode!
+    var pauseButton: MSButtonNode!
+    var resumeButton: MSButtonNode!
     
     // UI Labels
     var scoreLabel: SKLabelNode!
@@ -38,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var onTouch: Bool = false
     var onTeleport: Bool = true
     var isInTimer: Bool = false
+    var isShield: Bool = false
     
     // Variables
     var score: Int = 0
@@ -57,35 +65,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         map = childNode(withName: "map") as! SKSpriteNode
         endDialog = childNode(withName: "//endDialog") as! SKSpriteNode
         endDialog.zPosition = -5
+        pauseDialog = childNode(withName: "//pauseDialog") as! SKSpriteNode
+        pauseDialog.zPosition = -5
         nextLevelButton = childNode(withName: "//nextLevelButton") as! MSButtonNode
-        menuButton = childNode(withName: "//menuButton") as! MSButtonNode
+        restartButton = childNode(withName: "//restartButton") as! MSButtonNode
+        exitButton = childNode(withName: "//exitButton") as! MSButtonNode
+        pauseButton = childNode(withName: "//pauseButton") as! MSButtonNode
         scoreLabel = childNode(withName: "//score") as! SKLabelNode
         key = childNode(withName: "//key") as? SKSpriteNode
-        keySprite = childNode(withName: "//keySprite") as! SKSpriteNode
+        keySprite = childNode(withName: "//keySprite") as? SKSpriteNode
         exitLabel = childNode(withName: "//exitLabel") as! SKLabelNode
-        restartButton = childNode(withName: "//restartButton") as! MSButtonNode
         teleport1 = childNode(withName: "//teleport1") as? SKSpriteNode
         teleport2 = childNode(withName: "//teleport2") as? SKSpriteNode
         obstacle = childNode(withName: "//obstacle") as? SKSpriteNode
         liveNumberLabel = childNode(withName: "//liveNumber") as! SKLabelNode
-        liveStatusLabel = childNode(withName: "//liveStatus") as! SKLabelNode
-        
-        // Get current lives
-//        liveNumber = UserDefaults.standard.integer(forKey: "lives")
+        resumeButton = childNode(withName: "//resumeButton") as! MSButtonNode
+        shieldLine = childNode(withName: "//shieldLine") as? SKSpriteNode
+        shieldTimeline = childNode(withName: "//shieldTimeline") as? SKSpriteNode
+        needles = childNode(withName: "//needlesBody") as? SKSpriteNode
         
         // Set lives number label
         print("Live number is \(lives)")
         liveNumberLabel.text = String(lives)
-        
-        if (lives < 5){
-            
-            print("Live number is less 5")
-            
-        } else {
-            
-            // Set lives
-            liveStatusLabel.text = "FULL"
-        }
         
         // Call timer for flashing obstacle if it is in the scene
         if obstacle != nil {
@@ -136,19 +137,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             view.presentScene(scene)
         }
         
-        // Menu button clicked
-        menuButton.selectedHandler = {
+        // Exit button clicked
+        exitButton.selectedHandler = {
             
-            print("Menu button clicked")
+            print ("Exit button clicked")
             
-            guard let scene = GameScene(fileNamed: "Menu") else {
-                
-                print("Level is missing?")
-                return
-            }
+            self.loadScene("Levels")
+        }
+        
+        // Pause button clicked
+        pauseButton.selectedHandler = {
             
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene)
+            // Show pause menu
+            self.pauseDialog.zPosition = 5
+            
+            // Hide pause button
+            self.pauseButton.isHidden = true
+            
+            // Pause game
+            self.isPaused = true
+        }
+        
+        // Resume button clicked
+        resumeButton.selectedHandler = {
+            
+            // Hide pause menu
+            self.pauseDialog.zPosition = -5
+            
+            // Show pause button
+            self.pauseButton.isHidden = false
+            
+            // Unpause game
+            self.isPaused = false
         }
     }
     
@@ -166,13 +186,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if nodeAtPoint.name == "leftButton" {
             
             map.removeAllActions()
-            let action = SKAction.rotate(byAngle: CGFloat(Double.pi * 20), duration: 60.0)
+            let action = SKAction.rotate(byAngle: CGFloat(Double.pi * 30), duration: 60.0)
             map.run(action)
             
         } else if nodeAtPoint.name == "rightButton" {
             
             map.removeAllActions()
-            let action = SKAction.rotate(byAngle: CGFloat(-Double.pi * 20), duration: 60.0)
+            let action = SKAction.rotate(byAngle: CGFloat(-Double.pi * 30), duration: 60.0)
             map.run(action)
         }
         
@@ -244,7 +264,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             levels[currentLevel] = passLevel
-            levels[currentLevel + 1] = nextLevel
+            if !levels[currentLevel + 1].status {
+                
+                levels[currentLevel + 1] = nextLevel
+            }
             
             // Update level
             let levelsData = NSKeyedArchiver.archivedData(withRootObject: levels)
@@ -255,6 +278,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Show dialog
             endDialog.zPosition = 5
+            
+            // Hide pause button
+            pauseButton.isHidden = true
             
             // Remove all actions
             map.removeAllActions()
@@ -267,8 +293,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // If circle collides with obstale
 
-        else if ((nodeA.name == "obstacle" || nodeB.name == "obstacle") && !obstacle!.isHidden) ||
-            (nodeA.name == "end" || nodeB.name == "end"){
+        else if (((nodeA.name == "obstacle" || nodeB.name == "obstacle") && !obstacle!.isHidden) ||
+                (nodeA.name == "staticObstacle" || nodeB.name == "staticObstacle") && !isShield) ||
+            (nodeA.name == "end" || nodeB.name == "end") || (nodeA.name == "needles" || nodeB.name == "needles"){
             
             print("Hits obstacle")
             
@@ -313,12 +340,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 nodeB.removeFromParent()
             }
         }
-        
+            
         // If circle collides with key
-        
+            
         else if nodeA.name == "key" || nodeB.name == "key" {
             
-            keySprite.isHidden = false
+            keySprite?.isHidden = false
             exitLabel.text = "Open"
             exitLabel.fontSize = 16
             
@@ -326,6 +353,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 nodeA.removeFromParent()
             } else {
                 nodeB.removeFromParent()
+            }
+        }
+            
+        // If circle collides with key
+            
+        else if nodeA.name == "needlesButton" || nodeB.name == "needlesButton" {
+            
+            print("Needles button press")
+            
+            
+            var needlesButtonBody: SKSpriteNode!
+            if nodeA.name == "needlesButton" {
+                
+                needlesButtonBody = nodeA.parent as! SKSpriteNode
+                
+            } else {
+                
+                needlesButtonBody = nodeB.parent as! SKSpriteNode
+            }
+            
+            let moveButton = SKAction.scaleX(to: 0.3, y: needlesButtonBody.yScale, duration: 0.5)
+            needlesButtonBody.run(moveButton)
+            
+            let moveNeedles = SKAction.scaleY(to: 0.3, duration: 0.5)
+            needles?.run(moveNeedles)
+        }
+            
+        // If circle collides with shield
+            
+        else if nodeA.name == "shield" || nodeB.name == "shield" {
+            
+            // If is shield dont hit obstacles
+            isShield = true
+            
+            // Remove shield from the scene
+            if nodeA.name == "shield" {
+                nodeA.removeFromParent()
+            } else {
+                nodeB.removeFromParent()
+            }
+            
+            // Add shield line
+            shieldLine?.isHidden = false
+            
+            let shieldLineSizeCounter = (self.shieldTimeline?.size.width)! / self.shieldCounter
+            // Start shield timer
+            shieldTimer.startTimer(withInterval: 1.0) {
+                
+                self.startShieldTimer()
+                self.shieldTimeline?.size.width -= shieldLineSizeCounter
+                
+                if (self.shieldCounter == 0){
+                    
+                    self.shieldLine?.isHidden = true
+                    self.isShield = false
+                }
             }
         }
         
@@ -366,6 +449,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             }
         }
+    }
+    
+    // Shield timer
+    let shieldTimer = TimerModel.sharedTimer
+    var shieldCounter: CGFloat = 60.0
+    func startShieldTimer() {
+        
+        shieldCounter -= 1
     }
     
     // Some two objects stop colliding

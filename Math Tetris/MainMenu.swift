@@ -23,7 +23,7 @@ class MainMenu: SKScene {
         playButton.selectedHandler = {
             print("playbutton pressed")
             self.loadScene("Levels")
-        }
+        } 
     }
     
     func loadScene(_ sceneName: String){
@@ -48,9 +48,9 @@ class MainMenu: SKScene {
         scene.scaleMode = .aspectFill
         
         // Show debug
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
+//        skView.showsPhysics = true
+//        skView.showsDrawCount = true
+//        skView.showsFPS = true
         
         // 4) Start Game scene
         skView.presentScene(scene)

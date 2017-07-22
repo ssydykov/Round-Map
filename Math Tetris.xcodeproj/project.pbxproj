@@ -11,6 +11,13 @@
 		541383811F103919005D982C /* Levels.sks in Resources */ = {isa = PBXBuildFile; fileRef = 541383801F103919005D982C /* Levels.sks */; };
 		541383831F103A4B005D982C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541383821F103A4B005D982C /* MainMenu.swift */; };
 		542344951F16CD7800AD1B08 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542344941F16CD7800AD1B08 /* TimerModel.swift */; };
+		5423459B1F1FFD6800E5FE37 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5423459A1F1FFD6800E5FE37 /* Level_6.sks */; };
+		5453C5CE1F1D376200EB0345 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5CD1F1D376200EB0345 /* Chartboost.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		5453C5D01F1D37BB00EB0345 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5CF1F1D37BB00EB0345 /* UIKit.framework */; };
+		5453C5D21F1D37C600EB0345 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5D11F1D37C600EB0345 /* CoreGraphics.framework */; };
+		5453C5D41F1D37D300EB0345 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5D31F1D37D300EB0345 /* Foundation.framework */; };
+		5453C5D61F1D37E800EB0345 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5D51F1D37E800EB0345 /* StoreKit.framework */; };
+		5453C5D81F1D37F800EB0345 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5D71F1D37F800EB0345 /* GameplayKit.framework */; };
 		546868DD1F0AAC6F00565334 /* Exit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DC1F0AAC6F00565334 /* Exit.sks */; };
 		546868DF1F0D49E000565334 /* Circle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868DE1F0D49E000565334 /* Circle.sks */; };
 		546868E31F0D864600565334 /* EndDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546868E21F0D864600565334 /* EndDialog.sks */; };
@@ -30,6 +37,10 @@
 		547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547D629E1F10287C001CECE1 /* MainMenu.sks */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
 		549B46D11F103FEF001953FF /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B46D01F103FEF001953FF /* Levels.swift */; };
+		54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C31F1E6E5B003C099F /* PauseDialog.sks */; };
+		54A599C61F1E85FA003C099F /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C51F1E85FA003C099F /* Level_3.sks */; };
+		54A599C81F1E89D8003C099F /* Level_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C71F1E89D8003C099F /* Level_4.sks */; };
+		54A599CA1F1EC219003C099F /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C91F1EC219003C099F /* Level_5.sks */; };
 		98C922CDCFCD6293EAE41313 /* Pods_Math_Tetris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9481F5B6064090340F373C4 /* Pods_Math_Tetris.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +51,14 @@
 		541383801F103919005D982C /* Levels.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Levels.sks; sourceTree = "<group>"; };
 		541383821F103A4B005D982C /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		542344941F16CD7800AD1B08 /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		5423459A1F1FFD6800E5FE37 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
+		5453C5CD1F1D376200EB0345 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
+		5453C5CF1F1D37BB00EB0345 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5453C5D11F1D37C600EB0345 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5453C5D31F1D37D300EB0345 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5453C5D51F1D37E800EB0345 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5453C5D71F1D37F800EB0345 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
+		5453C5DA1F1D3E7A00EB0345 /* Math_Tetris-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Math_Tetris-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		546868DC1F0AAC6F00565334 /* Exit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exit.sks; sourceTree = "<group>"; };
 		546868DE1F0D49E000565334 /* Circle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Circle.sks; sourceTree = "<group>"; };
 		546868E21F0D864600565334 /* EndDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndDialog.sks; sourceTree = "<group>"; };
@@ -62,6 +81,10 @@
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		549B46D01F103FEF001953FF /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		54A599C31F1E6E5B003C099F /* PauseDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseDialog.sks; sourceTree = "<group>"; };
+		54A599C51F1E85FA003C099F /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
+		54A599C71F1E89D8003C099F /* Level_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_4.sks; sourceTree = "<group>"; };
+		54A599C91F1EC219003C099F /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
 		D9481F5B6064090340F373C4 /* Pods_Math_Tetris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Math_Tetris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,7 +93,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5453C5D81F1D37F800EB0345 /* GameplayKit.framework in Frameworks */,
+				5453C5D61F1D37E800EB0345 /* StoreKit.framework in Frameworks */,
+				5453C5D41F1D37D300EB0345 /* Foundation.framework in Frameworks */,
+				5453C5D21F1D37C600EB0345 /* CoreGraphics.framework in Frameworks */,
+				5453C5D01F1D37BB00EB0345 /* UIKit.framework in Frameworks */,
 				98C922CDCFCD6293EAE41313 /* Pods_Math_Tetris.framework in Frameworks */,
+				5453C5CE1F1D376200EB0345 /* Chartboost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,11 +118,11 @@
 		546ABD241F06C820002F69A7 = {
 			isa = PBXGroup;
 			children = (
-				546ABD491F06C8FE002F69A7 /* Assets.xcassets */,
 				546ABD2F1F06C820002F69A7 /* Math Tetris */,
 				546ABD2E1F06C820002F69A7 /* Products */,
 				5489065D1F0708F5002E6E47 /* Frameworks */,
 				21D8F5AFE65F984F65F23A5E /* Pods */,
+				546ABD491F06C8FE002F69A7 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,24 +137,30 @@
 		546ABD2F1F06C820002F69A7 /* Math Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
+				5453C5DA1F1D3E7A00EB0345 /* Math_Tetris-Bridging-Header.h */,
 				547D629E1F10287C001CECE1 /* MainMenu.sks */,
 				541383801F103919005D982C /* Levels.sks */,
 				546ABD321F06C820002F69A7 /* Level_0.sks */,
 				547D629C1F0FF9A9001CECE1 /* Level_1.sks */,
 				546AD1411F0EA5B600C33600 /* Level_2.sks */,
+				54A599C51F1E85FA003C099F /* Level_3.sks */,
+				54A599C71F1E89D8003C099F /* Level_4.sks */,
+				54A599C91F1EC219003C099F /* Level_5.sks */,
+				5423459A1F1FFD6800E5FE37 /* Level_6.sks */,
 				546868DE1F0D49E000565334 /* Circle.sks */,
 				546AD13F1F0E998200C33600 /* Obstacle.sks */,
 				546AD13B1F0DAEC800C33600 /* Star.sks */,
 				546AD1431F0EA69F00C33600 /* Key.sks */,
+				54A599C31F1E6E5B003C099F /* PauseDialog.sks */,
 				546868E21F0D864600565334 /* EndDialog.sks */,
 				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
-				542344941F16CD7800AD1B08 /* TimerModel.swift */,
 				549B46D01F103FEF001953FF /* Levels.swift */,
 				5413837E1F10333B005D982C /* Level.swift */,
+				542344941F16CD7800AD1B08 /* TimerModel.swift */,
 				541383821F103A4B005D982C /* MainMenu.swift */,
 				546ABD381F06C820002F69A7 /* GameViewController.swift */,
+				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
 				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
 				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
 				546ABD3A1F06C820002F69A7 /* Main.storyboard */,
@@ -138,6 +173,12 @@
 		5489065D1F0708F5002E6E47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5453C5D71F1D37F800EB0345 /* GameplayKit.framework */,
+				5453C5D51F1D37E800EB0345 /* StoreKit.framework */,
+				5453C5D31F1D37D300EB0345 /* Foundation.framework */,
+				5453C5D11F1D37C600EB0345 /* CoreGraphics.framework */,
+				5453C5CF1F1D37BB00EB0345 /* UIKit.framework */,
+				5453C5CD1F1D376200EB0345 /* Chartboost.framework */,
 				5489065E1F0708F5002E6E47 /* CoreMotion.framework */,
 				D9481F5B6064090340F373C4 /* Pods_Math_Tetris.framework */,
 			);
@@ -209,6 +250,7 @@
 			files = (
 				546AD1401F0E998200C33600 /* Obstacle.sks in Resources */,
 				546868DF1F0D49E000565334 /* Circle.sks in Resources */,
+				54A599CA1F1EC219003C099F /* Level_5.sks in Resources */,
 				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
 				546AD1441F0EA69F00C33600 /* Key.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
@@ -216,9 +258,13 @@
 				546ABD331F06C820002F69A7 /* Level_0.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
 				546868DD1F0AAC6F00565334 /* Exit.sks in Resources */,
+				54A599C81F1E89D8003C099F /* Level_4.sks in Resources */,
+				5423459B1F1FFD6800E5FE37 /* Level_6.sks in Resources */,
 				546AD13C1F0DAEC800C33600 /* Star.sks in Resources */,
 				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
+				54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */,
+				54A599C61F1E85FA003C099F /* Level_3.sks in Resources */,
 				546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */,
 				547D629D1F0FF9A9001CECE1 /* Level_1.sks in Resources */,
 				541383811F103919005D982C /* Levels.sks in Resources */,
@@ -360,6 +406,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -402,6 +449,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -412,10 +460,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R4ZFR478C6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Math Tetris/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.strixit.Math-Tetris";
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strixit.round-the-world";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Math_Tetris-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -426,10 +483,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R4ZFR478C6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Math Tetris/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.strixit.Math-Tetris";
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strixit.round-the-world";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Math_Tetris-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

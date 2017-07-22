@@ -7,46 +7,46 @@
 //
 
 import SpriteKit
-import GameplayKit
-import GoogleMobileAds
 
-// Global Variables
+// Variables
+var counter = 10 * 60
 var currentLevel: Int = 0
 var lives: Int = 10
 var isTimer: Bool = false
 var timerText: String = ""
-
-// Timer Variables
 let timer = TimerModel.sharedTimer
 
-var counter = 60
+// Method for timer
 func getTimer() -> String {
-    
+
     counter -= 1
-    
+
     let minutes: Int = counter / 60 as Int
     let seconds: Int = counter % 60 as Int
-    
+
     if (seconds < 10) {
-        
+
         print("Minutes: \(minutes), seconds: 0\(seconds)")
         timerText = "\(minutes):0\(seconds)"
-        
+
     } else {
-        
+
         print("Minutes: \(minutes), seconds: \(seconds)")
         timerText = "\(minutes):\(seconds)"
     }
-    
+
     return timerText
 }
 
-class Levels: SKScene, GADBannerViewDelegate {
+class Levels: SKScene, ChartboostDelegate {
     
-    // UI variable
+    // Buttons
     var rightButton: MSButtonNode!
     var leftButton: MSButtonNode!
     var addButton: MSButtonNode!
+    var hiddenButton: MSButtonNode!
+    
+    // Nodes
     var cameraNode: SKCameraNode!
     var liveNumberLabel: SKLabelNode!
     var liveStatusLabel: SKLabelNode!
@@ -65,7 +65,10 @@ class Levels: SKScene, GADBannerViewDelegate {
         liveStatusLabel = self.childNode(withName: "//liveStatus") as! SKLabelNode
         liveNumberLabel = self.childNode(withName: "//liveNumber") as! SKLabelNode
         addButton = self.childNode(withName: "//addButton") as! MSButtonNode
+        hiddenButton = self.childNode(withName: "//hiddenButton") as! MSButtonNode
         
+        // Reward video delegate
+        Chartboost.setDelegate(self)
         
         // Right arrow button is clicked
         rightButton.selectedHandler = {
@@ -85,6 +88,12 @@ class Levels: SKScene, GADBannerViewDelegate {
         addButton.selectedHandler = {
             
             print("Add button clicked")
+        
+            Chartboost.showRewardedVideo(CBLocationMainMenu)
+        }
+        
+        // Hidden button is clicked
+        hiddenButton.selectedHandler = {
             
             // Set lives number
             lives += 1
@@ -198,11 +207,26 @@ class Levels: SKScene, GADBannerViewDelegate {
             
             print("Timer is start, lives = \(lives)")
             
+            // Set live status text to start:
+            let minutes: Int = counter / 60 as Int
+            let seconds: Int = counter % 60 as Int
+            
+            if (seconds < 10) {
+                
+                print("Minutes: \(minutes), seconds: 0\(seconds)")
+                timerText = "\(minutes):0\(seconds)"
+                
+            } else {
+                
+                print("Minutes: \(minutes), seconds: \(seconds)")
+                timerText = "\(minutes):\(seconds)"
+            }
+            liveStatusLabel.text = timerText
+            
             timer.startTimer(withInterval: 1.00) {
                 
                 isTimer = true
                 timerText = getTimer()
-                self.liveStatusLabel.text = timerText
                 
                 if counter == 0 {
                     
@@ -212,7 +236,7 @@ class Levels: SKScene, GADBannerViewDelegate {
                     UserDefaults.standard.set(lives, forKey: "lives")
                     timer.stopTimer()
                     isTimer = false
-                    counter = 60
+                    counter = 10 * 60
                     self.showLives()
                 }
             }
@@ -222,15 +246,23 @@ class Levels: SKScene, GADBannerViewDelegate {
             // Set lives
             liveStatusLabel.text = "FULL"
         }
+        
+        
     }
     
     // Update function
     override func update(_ currentTime: TimeInterval) {
-        
-        if (isTimer){
+     
+        if (isTimer && lives < 10) {
             
             liveStatusLabel.text = timerText
         }
+        else if (lives == 10){
+            
+            // Set lives
+            liveStatusLabel.text = "FULL"
+        }
+        liveNumberLabel.text = String(lives)
     }
     
     // Calls when touch begins
@@ -284,5 +316,11 @@ class Levels: SKScene, GADBannerViewDelegate {
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
         
+    }
+    
+    // Did finish watching reward video
+    func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
+        
+        lives += Int(reward)
     }
 }

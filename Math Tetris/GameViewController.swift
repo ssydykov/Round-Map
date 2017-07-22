@@ -74,4 +74,16 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    override func viewWillLayoutSubviews() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startVideoAd), name: NSNotification.Name(rawValue: "showVideoRewardAd"), object: nil)
+        
+    }
+    
+    func startVideoAd() {
+        
+        // Do something - play video ad
+        
+    }
 }

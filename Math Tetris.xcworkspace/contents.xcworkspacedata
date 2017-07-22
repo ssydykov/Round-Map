@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Chartboost.framework">
+   </FileRef>
+   <FileRef
       location = "group:Math Tetris.xcodeproj">
    </FileRef>
    <FileRef
