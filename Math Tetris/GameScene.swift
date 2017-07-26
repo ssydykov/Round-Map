@@ -32,6 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var menuButton: MSButtonNode!
     var restartButton: MSButtonNode!
     var exitButton: MSButtonNode!
+    var restartButtonPause: MSButtonNode!
+    var exitButtonPause: MSButtonNode!
     var pauseButton: MSButtonNode!
     var resumeButton: MSButtonNode!
     
@@ -56,6 +58,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Set physics contact delegate */
         physicsWorld.contactDelegate = self
         
+        // Game is on
+        isGameOver = false
         
         // Initiate variables
         
@@ -70,6 +74,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         nextLevelButton = childNode(withName: "//nextLevelButton") as! MSButtonNode
         restartButton = childNode(withName: "//restartButton") as! MSButtonNode
         exitButton = childNode(withName: "//exitButton") as! MSButtonNode
+        restartButtonPause = childNode(withName: "//restartButtonPause") as! MSButtonNode
+        exitButtonPause = childNode(withName: "//exitButtonPause") as! MSButtonNode
         pauseButton = childNode(withName: "//pauseButton") as! MSButtonNode
         scoreLabel = childNode(withName: "//score") as! SKLabelNode
         key = childNode(withName: "//key") as? SKSpriteNode
@@ -136,9 +142,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             view.presentScene(scene)
         }
+        restartButtonPause.selectedHandler = {
+            
+            print ("Restart button clicked")
+            
+            guard let scene = GameScene.loadLevel(currentLevel) else {
+                
+                print ("Level is missing?")
+                return
+            }
+            
+            view.presentScene(scene)
+        }
         
         // Exit button clicked
         exitButton.selectedHandler = {
+            
+            print ("Exit button clicked")
+            
+            self.loadScene("Levels")
+        }
+        exitButtonPause.selectedHandler = {
             
             print ("Exit button clicked")
             
@@ -263,7 +287,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            levels[currentLevel] = passLevel
+            if levels[currentLevel].stars < score {
+                
+                levels[currentLevel] = passLevel
+            }
             if !levels[currentLevel + 1].status {
                 
                 levels[currentLevel + 1] = nextLevel
@@ -281,6 +308,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Hide pause button
             pauseButton.isHidden = true
+            
+            let star0 = endDialog.childNode(withName: "star0") as! SKSpriteNode
+            let star1 = endDialog.childNode(withName: "star1") as! SKSpriteNode
+            let star2 = endDialog.childNode(withName: "star2") as! SKSpriteNode
+            let star3 = endDialog.childNode(withName: "star3") as! SKSpriteNode
+            
+            switch score {
+            case 0:
+                star0.isHidden = false
+            case 1:
+                star1.isHidden = false
+            case 2:
+                star2.isHidden = false
+            case 3:
+                star3.isHidden = false
+            default:
+                star0.isHidden = false
+            }
             
             // Remove all actions
             map.removeAllActions()
@@ -320,6 +365,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 
                 print("Start levels scene")
+                
+                isGameOver = true
                 
                 // Show levels scene
                 self.loadScene("Levels")

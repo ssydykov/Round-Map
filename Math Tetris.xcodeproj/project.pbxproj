@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5409A9E31F280788005E613A /* WatchAddDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5409A9E21F280788005E613A /* WatchAddDialog.sks */; };
 		5413837F1F10333B005D982C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5413837E1F10333B005D982C /* Level.swift */; };
 		541383811F103919005D982C /* Levels.sks in Resources */ = {isa = PBXBuildFile; fileRef = 541383801F103919005D982C /* Levels.sks */; };
 		541383831F103A4B005D982C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541383821F103A4B005D982C /* MainMenu.swift */; };
 		542344951F16CD7800AD1B08 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542344941F16CD7800AD1B08 /* TimerModel.swift */; };
 		5423459B1F1FFD6800E5FE37 /* Level_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5423459A1F1FFD6800E5FE37 /* Level_6.sks */; };
+		543577EF1F269A8600B7D952 /* blitzkrieg-nf.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543577E51F2698B500B7D952 /* blitzkrieg-nf.regular.ttf */; };
 		5453C5CE1F1D376200EB0345 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5CD1F1D376200EB0345 /* Chartboost.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5453C5D01F1D37BB00EB0345 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5CF1F1D37BB00EB0345 /* UIKit.framework */; };
 		5453C5D21F1D37C600EB0345 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5453C5D11F1D37C600EB0345 /* CoreGraphics.framework */; };
@@ -47,11 +49,13 @@
 /* Begin PBXFileReference section */
 		3B788776B714121B49E2F33C /* Pods-Math Tetris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Tetris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Math Tetris/Pods-Math Tetris.release.xcconfig"; sourceTree = "<group>"; };
 		42CC53E84065CACF106EAF2C /* Pods-Math Tetris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Tetris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Math Tetris/Pods-Math Tetris.debug.xcconfig"; sourceTree = "<group>"; };
+		5409A9E21F280788005E613A /* WatchAddDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WatchAddDialog.sks; sourceTree = "<group>"; };
 		5413837E1F10333B005D982C /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		541383801F103919005D982C /* Levels.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Levels.sks; sourceTree = "<group>"; };
 		541383821F103A4B005D982C /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		542344941F16CD7800AD1B08 /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		5423459A1F1FFD6800E5FE37 /* Level_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_6.sks; sourceTree = "<group>"; };
+		543577E51F2698B500B7D952 /* blitzkrieg-nf.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "blitzkrieg-nf.regular.ttf"; sourceTree = "<group>"; };
 		5453C5CD1F1D376200EB0345 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		5453C5CF1F1D37BB00EB0345 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5453C5D11F1D37C600EB0345 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +157,7 @@
 				546AD1431F0EA69F00C33600 /* Key.sks */,
 				54A599C31F1E6E5B003C099F /* PauseDialog.sks */,
 				546868E21F0D864600565334 /* EndDialog.sks */,
+				5409A9E21F280788005E613A /* WatchAddDialog.sks */,
 				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
 				549B46D01F103FEF001953FF /* Levels.swift */,
@@ -163,6 +168,7 @@
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
 				548906621F071FE8002E6E47 /* MSButtonNode.swift */,
 				546ABD3D1F06C820002F69A7 /* Assets.xcassets */,
+				543577E51F2698B500B7D952 /* blitzkrieg-nf.regular.ttf */,
 				546ABD3A1F06C820002F69A7 /* Main.storyboard */,
 				546ABD3F1F06C820002F69A7 /* LaunchScreen.storyboard */,
 				546ABD421F06C820002F69A7 /* Info.plist */,
@@ -249,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				546AD1401F0E998200C33600 /* Obstacle.sks in Resources */,
+				5409A9E31F280788005E613A /* WatchAddDialog.sks in Resources */,
 				546868DF1F0D49E000565334 /* Circle.sks in Resources */,
 				54A599CA1F1EC219003C099F /* Level_5.sks in Resources */,
 				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
@@ -265,6 +272,7 @@
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
 				54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */,
 				54A599C61F1E85FA003C099F /* Level_3.sks in Resources */,
+				543577EF1F269A8600B7D952 /* blitzkrieg-nf.regular.ttf in Resources */,
 				546AD1421F0EA5B600C33600 /* Level_2.sks in Resources */,
 				547D629D1F0FF9A9001CECE1 /* Level_1.sks in Resources */,
 				541383811F103919005D982C /* Levels.sks in Resources */,

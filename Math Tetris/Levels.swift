@@ -9,7 +9,8 @@
 import SpriteKit
 
 // Variables
-var counter = 10 * 60
+var isGameOver = false
+var counter = 5 * 60
 var currentLevel: Int = 0
 var lives: Int = 10
 var isTimer: Bool = false
@@ -45,11 +46,15 @@ class Levels: SKScene, ChartboostDelegate {
     var leftButton: MSButtonNode!
     var addButton: MSButtonNode!
     var hiddenButton: MSButtonNode!
+    var xButton: MSButtonNode!
+    var goPremiumButton: MSButtonNode!
+    var watchAddButton: MSButtonNode!
     
     // Nodes
     var cameraNode: SKCameraNode!
     var liveNumberLabel: SKLabelNode!
     var liveStatusLabel: SKLabelNode!
+    var gameOverDialog: SKSpriteNode!
     
     // Variables
     var levels: Array<Level> = []
@@ -66,6 +71,35 @@ class Levels: SKScene, ChartboostDelegate {
         liveNumberLabel = self.childNode(withName: "//liveNumber") as! SKLabelNode
         addButton = self.childNode(withName: "//addButton") as! MSButtonNode
         hiddenButton = self.childNode(withName: "//hiddenButton") as! MSButtonNode
+        gameOverDialog = self.childNode(withName: "//watchAddDialog") as! SKSpriteNode
+        xButton = self.childNode(withName: "//xButton") as! MSButtonNode
+        goPremiumButton = self.childNode(withName: "//goPremiumButton") as! MSButtonNode
+        watchAddButton = self.childNode(withName: "//watchAddButton") as! MSButtonNode
+        
+        // If game over show dialog
+        if isGameOver {
+            
+            gameOverDialog.isHidden = false
+        }
+        
+        // X Button clicked
+        xButton.selectedHandler = {
+            
+            self.gameOverDialog.isHidden = true
+        }
+        
+        // Go premium button clicked
+        goPremiumButton.selectedHandler = {
+            
+            // Go premium buy app
+        }
+        
+        // Watch add button clicked
+        watchAddButton.selectedHandler = {
+            
+            Chartboost.showRewardedVideo(CBLocationMainMenu)
+            self.gameOverDialog.isHidden = true
+        }
         
         // Reward video delegate
         Chartboost.setDelegate(self)
@@ -89,7 +123,7 @@ class Levels: SKScene, ChartboostDelegate {
             
             print("Add button clicked")
         
-            Chartboost.showRewardedVideo(CBLocationMainMenu)
+            self.gameOverDialog.isHidden = false
         }
         
         // Hidden button is clicked
@@ -158,7 +192,13 @@ class Levels: SKScene, ChartboostDelegate {
             
             let status = levels[item].status
             let time = levels[item].time
+            let star = levels[item].stars
             let lockItem = listItem.childNode(withName: "lock") as! SKSpriteNode
+            let starOrange0 = listItem.childNode(withName: "star_0_orange") as! SKSpriteNode
+            let star0 = listItem.childNode(withName: "star_0") as! SKSpriteNode
+            let star1 = listItem.childNode(withName: "star_1") as! SKSpriteNode
+            let star2 = listItem.childNode(withName: "star_2") as! SKSpriteNode
+            let star3 = listItem.childNode(withName: "star_3") as! SKSpriteNode
             
             // If level is open
             if status {
@@ -167,17 +207,33 @@ class Levels: SKScene, ChartboostDelegate {
                 if time != "" {
                     
                     // Set level border color to green
-                    listItem.strokeColor = UIColor.green
+                    listItem.strokeColor = UIColor(red: 170/255, green: 238/255, blue: 101/255, alpha: 1)
+                    
+                    switch star {
+                    case 0:
+                        star0.isHidden = false
+                    case 1:
+                        star1.isHidden = false
+                    case 2:
+                        star2.isHidden = false
+                    case 3:
+                        star3.isHidden = false
+                    default:
+                        star0.isHidden = false
+                    }
                 }
                     
                 // If level already passed
                 else {
                     
                     // Set level border color to orange
-                    listItem.strokeColor = UIColor.orange
+                    listItem.strokeColor = UIColor(red: 215/255, green: 158/255, blue: 65/255, alpha: 1)
+                    
+                    // Set orange star visible
+                    starOrange0.isHidden = false
                 }
                 
-                // Set lock item vissible
+                // Set lock item invissible
                 lockItem.isHidden = true
             }
                 
@@ -185,9 +241,9 @@ class Levels: SKScene, ChartboostDelegate {
             else {
                 
                 // Set level border color to red
-                listItem.strokeColor = UIColor.red
+                listItem.strokeColor = UIColor(red: 255/255, green: 57/255, blue: 93/255, alpha: 1)
                 
-                // Set lock item invissible
+                // Set lock item vissible
                 lockItem.isHidden = false
             }
             
