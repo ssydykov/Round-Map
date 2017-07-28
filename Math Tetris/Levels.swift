@@ -7,6 +7,8 @@
 //
 
 import SpriteKit
+import Foundation
+import SystemConfiguration
 
 // Variables
 var isGameOver = false
@@ -60,6 +62,9 @@ class Levels: SKScene, ChartboostDelegate {
     var levels: Array<Level> = []
     let numberOfLevels = 11
     
+    // Labels
+    var internetLabel: SKLabelNode!
+    
     override func didMove(to view: SKView) {
         
         // Initialize variables
@@ -75,12 +80,7 @@ class Levels: SKScene, ChartboostDelegate {
         xButton = self.childNode(withName: "//xButton") as! MSButtonNode
         goPremiumButton = self.childNode(withName: "//goPremiumButton") as! MSButtonNode
         watchAddButton = self.childNode(withName: "//watchAddButton") as! MSButtonNode
-        
-        // If game over show dialog
-        if isGameOver {
-            
-            gameOverDialog.isHidden = false
-        }
+        internetLabel = self.childNode(withName: "//internetLabel") as! SKLabelNode
         
         // X Button clicked
         xButton.selectedHandler = {
@@ -91,14 +91,22 @@ class Levels: SKScene, ChartboostDelegate {
         // Go premium button clicked
         goPremiumButton.selectedHandler = {
             
-            // Go premium buy app
+            // Link to paid version
         }
         
         // Watch add button clicked
         watchAddButton.selectedHandler = {
             
-            Chartboost.showRewardedVideo(CBLocationMainMenu)
-            self.gameOverDialog.isHidden = true
+            if self.isInternetAvailable() {
+                
+                Chartboost.showRewardedVideo(CBLocationMainMenu)
+                self.gameOverDialog.isHidden = true
+                self.internetLabel.isHidden = true
+                
+            } else {
+                
+                self.internetLabel.isHidden = false
+            }
         }
         
         // Reward video delegate
@@ -147,6 +155,12 @@ class Levels: SKScene, ChartboostDelegate {
                 lives = UserDefaults.standard.integer(forKey: "lives")
                 
                 print("Data came from storage")
+                
+                // If lives equals 0
+                if lives == 0 {
+                    
+                    isGameOver = true
+                }
             }
         }
         
@@ -172,6 +186,12 @@ class Levels: SKScene, ChartboostDelegate {
             UserDefaults.standard.set(lives, forKey: "lives")
             
             print("Levels and lives are saved")
+        }
+        
+        // If game over show dialog
+        if isGameOver {
+            
+            gameOverDialog.isHidden = false
         }
         
         // Show list of levels
@@ -292,7 +312,7 @@ class Levels: SKScene, ChartboostDelegate {
                     UserDefaults.standard.set(lives, forKey: "lives")
                     timer.stopTimer()
                     isTimer = false
-                    counter = 10 * 60
+                    counter = 5 * 60
                     self.showLives()
                 }
             }
@@ -313,7 +333,7 @@ class Levels: SKScene, ChartboostDelegate {
             
             liveStatusLabel.text = timerText
         }
-        else if (lives == 10){
+        else if (lives >= 10){
             
             // Set lives
             liveStatusLabel.text = "FULL"
@@ -344,6 +364,10 @@ class Levels: SKScene, ChartboostDelegate {
                     
                     currentLevel = item
                     self.loadScene("Level_\(item)")
+                }
+                else if status {
+                    
+                    self.gameOverDialog.isHidden = false
                 }
             }
         }
@@ -378,5 +402,29 @@ class Levels: SKScene, ChartboostDelegate {
     func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
         
         lives += Int(reward)
+        
+        // Save lives number
+        UserDefaults.standard.set(lives, forKey: "lives")
+    }
+    
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        return (isReachable && !needsConnection)
     }
 }

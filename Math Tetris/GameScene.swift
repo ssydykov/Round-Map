@@ -165,6 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         exitButtonPause.selectedHandler = {
             
             print ("Exit button clicked")
+            print ("Lives = \(lives)")
             
             self.loadScene("Levels")
         }
@@ -516,13 +517,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let contactB = contact.bodyB
         
         /* Get references to the physics body parent nodes */
-        let nodeA = contactA.node!
-        let nodeB = contactB.node!
+        let nodeA = contactA.node
+        let nodeB = contactB.node
         
         // If circle stop colliding with teleports
         
-        if nodeA.name == "teleport1" || nodeB.name == "teleport1" ||
-            nodeA.name == "teleport2" || nodeB.name == "teleport2" {
+        if nodeA?.name == "teleport1" || nodeB?.name == "teleport1" ||
+            nodeA?.name == "teleport2" || nodeB?.name == "teleport2" {
             
             onTeleport = true
         }

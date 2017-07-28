@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5402857B1F295E7E000DBE0E /* Level_8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5402857A1F295E7E000DBE0E /* Level_8.sks */; };
+		5402857D1F2A7E26000DBE0E /* Level_11.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5402857C1F2A7E26000DBE0E /* Level_11.sks */; };
 		5409A9E31F280788005E613A /* WatchAddDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5409A9E21F280788005E613A /* WatchAddDialog.sks */; };
 		5413837F1F10333B005D982C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5413837E1F10333B005D982C /* Level.swift */; };
 		541383811F103919005D982C /* Levels.sks in Resources */ = {isa = PBXBuildFile; fileRef = 541383801F103919005D982C /* Levels.sks */; };
@@ -37,6 +39,9 @@
 		546AD1441F0EA69F00C33600 /* Key.sks in Resources */ = {isa = PBXBuildFile; fileRef = 546AD1431F0EA69F00C33600 /* Key.sks */; };
 		547D629D1F0FF9A9001CECE1 /* Level_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547D629C1F0FF9A9001CECE1 /* Level_1.sks */; };
 		547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547D629E1F10287C001CECE1 /* MainMenu.sks */; };
+		547DA3511F2A885F00F1178C /* Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3501F2A885F00F1178C /* Level_9.sks */; };
+		547DA3531F2A898900F1178C /* Level_10.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3521F2A898900F1178C /* Level_10.sks */; };
+		547DA3551F2AAA6A00F1178C /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3541F2AAA6A00F1178C /* Level_7.sks */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
 		549B46D11F103FEF001953FF /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B46D01F103FEF001953FF /* Levels.swift */; };
 		54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C31F1E6E5B003C099F /* PauseDialog.sks */; };
@@ -49,6 +54,8 @@
 /* Begin PBXFileReference section */
 		3B788776B714121B49E2F33C /* Pods-Math Tetris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Tetris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Math Tetris/Pods-Math Tetris.release.xcconfig"; sourceTree = "<group>"; };
 		42CC53E84065CACF106EAF2C /* Pods-Math Tetris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Tetris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Math Tetris/Pods-Math Tetris.debug.xcconfig"; sourceTree = "<group>"; };
+		5402857A1F295E7E000DBE0E /* Level_8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_8.sks; sourceTree = "<group>"; };
+		5402857C1F2A7E26000DBE0E /* Level_11.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_11.sks; sourceTree = "<group>"; };
 		5409A9E21F280788005E613A /* WatchAddDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WatchAddDialog.sks; sourceTree = "<group>"; };
 		5413837E1F10333B005D982C /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		541383801F103919005D982C /* Levels.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Levels.sks; sourceTree = "<group>"; };
@@ -82,6 +89,9 @@
 		546AD1431F0EA69F00C33600 /* Key.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Key.sks; sourceTree = "<group>"; };
 		547D629C1F0FF9A9001CECE1 /* Level_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_1.sks; sourceTree = "<group>"; };
 		547D629E1F10287C001CECE1 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		547DA3501F2A885F00F1178C /* Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_9.sks; sourceTree = "<group>"; };
+		547DA3521F2A898900F1178C /* Level_10.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_10.sks; sourceTree = "<group>"; };
+		547DA3541F2AAA6A00F1178C /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		549B46D01F103FEF001953FF /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
@@ -151,6 +161,11 @@
 				54A599C71F1E89D8003C099F /* Level_4.sks */,
 				54A599C91F1EC219003C099F /* Level_5.sks */,
 				5423459A1F1FFD6800E5FE37 /* Level_6.sks */,
+				547DA3541F2AAA6A00F1178C /* Level_7.sks */,
+				5402857A1F295E7E000DBE0E /* Level_8.sks */,
+				547DA3501F2A885F00F1178C /* Level_9.sks */,
+				547DA3521F2A898900F1178C /* Level_10.sks */,
+				5402857C1F2A7E26000DBE0E /* Level_11.sks */,
 				546868DE1F0D49E000565334 /* Circle.sks */,
 				546AD13F1F0E998200C33600 /* Obstacle.sks */,
 				546AD13B1F0DAEC800C33600 /* Star.sks */,
@@ -255,13 +270,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				546AD1401F0E998200C33600 /* Obstacle.sks in Resources */,
+				547DA3551F2AAA6A00F1178C /* Level_7.sks in Resources */,
 				5409A9E31F280788005E613A /* WatchAddDialog.sks in Resources */,
 				546868DF1F0D49E000565334 /* Circle.sks in Resources */,
+				547DA3531F2A898900F1178C /* Level_10.sks in Resources */,
+				5402857B1F295E7E000DBE0E /* Level_8.sks in Resources */,
 				54A599CA1F1EC219003C099F /* Level_5.sks in Resources */,
 				546868E31F0D864600565334 /* EndDialog.sks in Resources */,
 				546AD1441F0EA69F00C33600 /* Key.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
 				547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */,
+				5402857D1F2A7E26000DBE0E /* Level_11.sks in Resources */,
 				546ABD331F06C820002F69A7 /* Level_0.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
 				546868DD1F0AAC6F00565334 /* Exit.sks in Resources */,
@@ -270,6 +289,7 @@
 				546AD13C1F0DAEC800C33600 /* Star.sks in Resources */,
 				546ABD4B1F06C8FE002F69A7 /* Assets.xcassets in Resources */,
 				546ABD411F06C820002F69A7 /* LaunchScreen.storyboard in Resources */,
+				547DA3511F2A885F00F1178C /* Level_9.sks in Resources */,
 				54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */,
 				54A599C61F1E85FA003C099F /* Level_3.sks in Resources */,
 				543577EF1F269A8600B7D952 /* blitzkrieg-nf.regular.ttf in Resources */,
