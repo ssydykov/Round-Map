@@ -49,6 +49,7 @@
 		54A599C61F1E85FA003C099F /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C51F1E85FA003C099F /* Level_3.sks */; };
 		54A599C81F1E89D8003C099F /* Level_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C71F1E89D8003C099F /* Level_4.sks */; };
 		54A599CA1F1EC219003C099F /* Level_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C91F1EC219003C099F /* Level_5.sks */; };
+		54D499DA1F31AED10088888E /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54D499D91F31AED10088888E /* PlayerTrail.sks */; };
 		98C922CDCFCD6293EAE41313 /* Pods_Math_Tetris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9481F5B6064090340F373C4 /* Pods_Math_Tetris.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		54A599C51F1E85FA003C099F /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
 		54A599C71F1E89D8003C099F /* Level_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_4.sks; sourceTree = "<group>"; };
 		54A599C91F1EC219003C099F /* Level_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_5.sks; sourceTree = "<group>"; };
+		54D499D91F31AED10088888E /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerTrail.sks; sourceTree = "<group>"; };
 		D9481F5B6064090340F373C4 /* Pods_Math_Tetris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Math_Tetris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				549B46D01F103FEF001953FF /* Levels.swift */,
 				541383821F103A4B005D982C /* MainMenu.swift */,
 				5413837E1F10333B005D982C /* Level.swift */,
+				54D499D91F31AED10088888E /* PlayerTrail.sks */,
 				542344941F16CD7800AD1B08 /* TimerModel.swift */,
 				546ABD381F06C820002F69A7 /* GameViewController.swift */,
 				546ABD301F06C820002F69A7 /* AppDelegate.swift */,
@@ -283,6 +286,7 @@
 				546AD1441F0EA69F00C33600 /* Key.sks in Resources */,
 				546ABD3C1F06C820002F69A7 /* Main.storyboard in Resources */,
 				547D629F1F10287C001CECE1 /* MainMenu.sks in Resources */,
+				54D499DA1F31AED10088888E /* PlayerTrail.sks in Resources */,
 				5402857D1F2A7E26000DBE0E /* Level_11.sks in Resources */,
 				546ABD331F06C820002F69A7 /* Level_0.sks in Resources */,
 				5488B6851F2BB5B1009550F5 /* GoogleService-Info.plist in Resources */,

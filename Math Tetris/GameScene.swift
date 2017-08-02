@@ -27,6 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shieldLine: SKSpriteNode?
     var shieldTimeline: SKSpriteNode?
     var needles: SKSpriteNode?
+    var exit: SKSpriteNode!
     
     // Buttons
     var nextLevelButton: MSButtonNode!
@@ -40,9 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // UI Labels
     var scoreLabel: SKLabelNode!
-    var exitLabel: SKLabelNode!
     var liveNumberLabel: SKLabelNode!
     var liveStatusLabel: SKLabelNode!
+    
+    // Emitter
+    let emitter = SKEmitterNode(fileNamed: "PlayerTrail.sks")!
     
     // Booleans
     var onTouch: Bool = false
@@ -86,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel = childNode(withName: "//score") as! SKLabelNode
         key = childNode(withName: "//key") as? SKSpriteNode
         keySprite = childNode(withName: "//keySprite") as? SKSpriteNode
-        exitLabel = childNode(withName: "//exitLabel") as! SKLabelNode
+        exit = childNode(withName: "//exit") as! SKSpriteNode
         teleport1 = childNode(withName: "//teleport1") as? SKSpriteNode
         teleport2 = childNode(withName: "//teleport2") as? SKSpriteNode
         obstacle = childNode(withName: "//obstacle") as? SKSpriteNode
@@ -95,6 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shieldLine = childNode(withName: "//shieldLine") as? SKSpriteNode
         shieldTimeline = childNode(withName: "//shieldTimeline") as? SKSpriteNode
         needles = childNode(withName: "//needlesBody") as? SKSpriteNode
+        emitter.targetNode = scene
         
         // Set lives number label
         print("Live number is \(lives)")
@@ -116,8 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("key node is in the scene")
             
             // Set exit label to closed
-            exitLabel.text = "Closed"
-            exitLabel.fontSize = 13
+            exit.isHidden = true
         }
         
         // Next level button clicked
@@ -275,7 +278,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // If circle collides with exit
         if ((nodeA.name == "exit" || nodeB.name == "exit") &&
-            exitLabel.text != "Closed"){
+            !exit.isHidden){
             
             print("Exit is collide")
             
@@ -405,8 +408,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if nodeA.name == "key" || nodeB.name == "key" {
             
             keySprite?.isHidden = false
-            exitLabel.text = "Open"
-            exitLabel.fontSize = 16
+            
+            exit.alpha = 0.0
+            exit.isHidden = false
+            let fadeInAction = SKAction.fadeIn(withDuration: 2.0)
+            exit.run(fadeInAction)
             
             if nodeA.name == "key" {
                 nodeA.removeFromParent()
@@ -445,6 +451,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // If is shield dont hit obstacles
             isShield = true
+            
+            // Add emitter (trail) to player
+            circle.addChild(emitter)
             
             // Remove shield from the scene
             if nodeA.name == "shield" {
@@ -540,6 +549,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.shieldLine?.isHidden = true
             self.isShield = false
+            
+            // remove trail
+            emitter.removeFromParent()
             
             shieldTimer.invalidate()
         }
