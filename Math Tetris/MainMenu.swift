@@ -16,14 +16,24 @@ class MainMenu: SKScene {
     
     override func didMove(to view: SKView) {
         
+        trackScreenView()
+        
         // Set UI connection
         playButton = self.childNode(withName: "playButton") as! MSButtonNode
         
         // Set play button on click
         playButton.selectedHandler = {
+            
             print("playbutton pressed")
             self.loadScene("Levels")
         } 
+    }
+    
+    func trackScreenView() {
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIScreenName, value: "Main Menu")
+        tracker?.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]?)
     }
     
     func loadScene(_ sceneName: String){

@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import Google
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -52,8 +53,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Variables
     var score: Int = 0
     var timer = Timer()
+    var shieldTimer = Timer()
+    
     
     override func didMove(to view: SKView) {
+        
+        // Analytics
+        trackScreenView()
         
         /* Set physics contact delegate */
         physicsWorld.contactDelegate = self
@@ -292,7 +298,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 levels[currentLevel] = passLevel
             }
-            if !levels[currentLevel + 1].status {
+            if currentLevel == 11 {
+                
+                gameCompleted = true
+            }
+            else if !levels[currentLevel + 1].status {
                 
                 levels[currentLevel + 1] = nextLevel
             }
@@ -316,16 +326,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let star3 = endDialog.childNode(withName: "star3") as! SKSpriteNode
             
             switch score {
-            case 0:
-                star0.isHidden = false
-            case 1:
-                star1.isHidden = false
-            case 2:
-                star2.isHidden = false
-            case 3:
-                star3.isHidden = false
-            default:
-                star0.isHidden = false
+                
+                case 0:
+                    star0.isHidden = false
+                case 1:
+                    star1.isHidden = false
+                case 2:
+                    star2.isHidden = false
+                case 3:
+                    star3.isHidden = false
+                default:
+                    star0.isHidden = false
             }
             
             // Remove all actions
@@ -445,19 +456,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Add shield line
             shieldLine?.isHidden = false
             
-            let shieldLineSizeCounter = (self.shieldTimeline?.size.width)! / self.shieldCounter
             // Start shield timer
-            shieldTimer.startTimer(withInterval: 1.0) {
-                
-                self.startShieldTimer()
-                self.shieldTimeline?.size.width -= shieldLineSizeCounter
-                
-                if (self.shieldCounter == 0){
-                    
-                    self.shieldLine?.isHidden = true
-                    self.isShield = false
-                }
-            }
+            shieldTimerInterval()
+            
+//            let shieldLineSizeCounter = (self.shieldTimeline?.size.width)! / self.shieldCounter
+//            // Start shield timer
+//            shieldTimer.startTimer(withInterval: 1.0) {
+//                
+//                self.startShieldTimer()
+//                self.shieldTimeline?.size.width -= shieldLineSizeCounter
+//                
+//                if (self.shieldCounter == 0){
+//                    
+//                    self.shieldLine?.isHidden = true
+//                    self.isShield = false
+//                }
+//            }
         }
         
         // If circle collides with teleports
@@ -499,12 +513,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // Shield timer
-    let shieldTimer = TimerModel.sharedTimer
-    var shieldCounter: CGFloat = 60.0
-    func startShieldTimer() {
+    // ShieldTimerCounter
+    var shieldTimerCounter = 1
+    var shieldLineSizeCounter: CGFloat = 0
+    
+    // Set interval function to shield timer
+    func shieldTimerInterval(){
         
-        shieldCounter -= 1
+        shieldLineSizeCounter = (self.shieldTimeline?.size.width)! / 15
+        
+        shieldTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.shieldTimerTimelineFunction), userInfo: nil, repeats: true)
+    }
+    
+    // Shield timer line function
+    func shieldTimerTimelineFunction(){
+
+        print("Shield timer: \(shieldTimerCounter)")
+        
+
+
+        self.shieldTimeline?.size.width -= shieldLineSizeCounter
+        
+        if shieldTimerCounter == 16 {
+            
+            print("Fire")
+            
+            self.shieldLine?.isHidden = true
+            self.isShield = false
+            
+            shieldTimer.invalidate()
+        }
+        
+        shieldTimerCounter += 1
     }
     
     // Some two objects stop colliding
@@ -594,5 +634,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         circle.physicsBody?.mass = 0.5
         
         self.addChild(circle)
+    }
+    
+    func trackScreenView() {
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIScreenName, value: "Level \(currentLevel)")
+        tracker?.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]?)
     }
 }

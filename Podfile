@@ -8,5 +8,6 @@ target 'Math Tetris' do
   # Pods for Math Tetris
 
   pod 'Google-Mobile-Ads-SDK'
+  pod 'Google/Analytics'
 
 end

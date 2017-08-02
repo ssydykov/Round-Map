@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F552C378D71ADF7170F969EADDF5F66"
+               BlueprintIdentifier = "33C98CE61B0B76A1EE9D0C96BF204197"
                BuildableName = "Pods_Math_Tetris.framework"
                BlueprintName = "Pods-Math Tetris"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F552C378D71ADF7170F969EADDF5F66"
+            BlueprintIdentifier = "33C98CE61B0B76A1EE9D0C96BF204197"
             BuildableName = "Pods_Math_Tetris.framework"
             BlueprintName = "Pods-Math Tetris"
             ReferencedContainer = "container:Pods.xcodeproj">

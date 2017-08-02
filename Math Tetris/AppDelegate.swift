@@ -7,6 +7,7 @@
 //
 
 import GoogleMobileAds
+import Google
 import UIKit
 
 @UIApplicationMain
@@ -20,14 +21,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Game is opened")
         
+        // Chartboost framework settup
         Chartboost.start(withAppId: "596cff2643150f536890853e", appSignature: "2ae441f517ad8b9d1dcf60ca16ee06dc27e373b2", delegate: nil)
         
         counter = UserDefaults.standard.integer(forKey: "counter")
         if counter == 0 {
-            counter = 10 * 60
+            counter = 5 * 60
         }
         
         return true
+    }
+    
+    func setupGoogleAnalytics() {
+        
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+        
+        // Optional: configure GAI options.
+        guard let gai = GAI.sharedInstance() else {
+            assert(false, "Google Analytics not configured correctly")
+        }
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai.logger.logLevel = GAILogLevel.verbose  // remove before app release
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        
+        // Google analytics setup
+        self.setupGoogleAnalytics()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

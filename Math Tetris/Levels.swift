@@ -9,9 +9,11 @@
 import SpriteKit
 import Foundation
 import SystemConfiguration
+import Google
 
 // Variables
 var isGameOver = false
+var gameCompleted = false
 var counter = 5 * 60
 var currentLevel: Int = 0
 var lives: Int = 10
@@ -67,6 +69,8 @@ class Levels: SKScene, ChartboostDelegate {
     
     override func didMove(to view: SKView) {
         
+        trackScreenView()
+        
         // Initialize variables
         rightButton = self.childNode(withName: "//rightButton") as! MSButtonNode
         leftButton = self.childNode(withName: "//leftButton") as! MSButtonNode
@@ -92,6 +96,7 @@ class Levels: SKScene, ChartboostDelegate {
         goPremiumButton.selectedHandler = {
             
             // Link to paid version
+        
         }
         
         // Watch add button clicked
@@ -192,6 +197,12 @@ class Levels: SKScene, ChartboostDelegate {
         if isGameOver {
             
             gameOverDialog.isHidden = false
+        }
+        
+        // If game completed
+        if gameCompleted {
+            
+            // Show completed message
         }
         
         // Show list of levels
@@ -405,6 +416,13 @@ class Levels: SKScene, ChartboostDelegate {
         
         // Save lives number
         UserDefaults.standard.set(lives, forKey: "lives")
+    }
+    
+    func trackScreenView() {
+        
+        let tracker = GAI.sharedInstance().tracker(withTrackingId: "UA-103558946-1")
+        tracker?.set(kGAIScreenName, value: "Levels")
+        tracker?.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]?)
     }
     
     func isInternetAvailable() -> Bool

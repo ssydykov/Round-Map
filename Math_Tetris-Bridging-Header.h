@@ -13,5 +13,6 @@
 #import <Chartboost/Chartboost.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <AdSupport/AdSupport.h>
+#import <Google/Analytics.h>
 
 #endif /* Math_Tetris_Bridging_Header_h__h */

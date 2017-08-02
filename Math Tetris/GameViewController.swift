@@ -15,29 +15,25 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'GameScene.sks'
-//            if let scene = SKScene(fileNamed: "GameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                
-//                // Linking view controller and scene to show ads
-//                scene.viewController = self
-//                
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//            
-//            view.ignoresSiblingOrder = true
-//            
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
 
         if let scene = MainMenu(fileNamed:"MainMenu") {
             
-            // Linking view controller and scene to show ads
-//            scene.viewController = self
+            // Google analytics
+            
+            if (GAI.sharedInstance().defaultTracker) != nil {
+                #if DEBUG
+                    
+                    print("default tracker")
+                    
+                #endif
+            }
+            
+            //        let tracker = GAI.sharedInstance().defaultTracker
+            let tracker = GAI.sharedInstance().tracker(withTrackingId: "UA-103558946-1")
+            tracker?.set(kGAIScreenName, value: "Screen Name")
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker?.send(builder?.build()! as! [NSObject : AnyObject])
+            
             
             // Configure the view.
             let skView = self.view as! SKView
