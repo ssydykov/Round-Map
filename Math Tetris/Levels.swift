@@ -219,7 +219,7 @@ class Levels: SKScene, ChartboostDelegate {
             let listItem = self.childNode(withName: "//Level \(item)") as! SKShapeNode
             
             // Print level label and their status
-            print("Label: \(levels[item].label), status: \(levels[item].status)")
+            print("Label: \(levels[item].label), status: \(levels[item].status), time: \(levels[item].time)")
             
             let status = levels[item].status
             let time = levels[item].time

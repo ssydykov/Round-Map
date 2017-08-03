@@ -60,7 +60,8 @@ class MainMenu: SKScene {
         // Show debug
 //        skView.showsPhysics = true
 //        skView.showsDrawCount = true
-//        skView.showsFPS = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         
         // 4) Start Game scene
         skView.presentScene(scene)

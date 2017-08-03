@@ -52,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var onTeleport: Bool = true
     var isInTimer: Bool = false
     var isShield: Bool = false
+    var isObstacleCollideEnd = true
     
     // Variables
     var score: Int = 0
@@ -241,7 +242,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     
-        
+        if (obstacle != nil && !obstacle!.isHidden && !isObstacleCollideEnd) {
+            
+            killPlayer()
+        }
     }
     
     // Recursive function for hideUnhide method
@@ -276,6 +280,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let nodeA = contactA.node!
         let nodeB = contactB.node!
         
+        // If circle collides with hidden obstacle
+        if nodeA.name == "obstacle" || nodeB.name == "obstacle" {
+            
+            isObstacleCollideEnd = false
+        }
+        
         // If circle collides with exit
         if ((nodeA.name == "exit" || nodeB.name == "exit") &&
             !exit.isHidden){
@@ -297,7 +307,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if levels[currentLevel].stars < score {
+            if levels[currentLevel].stars <= score {
                 
                 levels[currentLevel] = passLevel
             }
@@ -359,34 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             print("Hits obstacle")
             
-            // Live --
-            lives -= 1
-            
-            // Set lives number
-            UserDefaults.standard.set(lives, forKey: "lives")
-            
-            if lives > 0 {
-                
-                print("Start level \(currentLevel + 1) again")
-                
-                // Start level again
-                guard let scene = GameScene.loadLevel(currentLevel) else {
-                    
-                    print ("Level is missing?")
-                    return
-                }
-                self.view?.presentScene(scene)
-                
-            } else {
-                
-                print("Start levels scene")
-                
-                isGameOver = true
-                
-                // Show levels scene
-                self.loadScene("Levels")
-            }
-            
+            killPlayer()
         }
         
         // If circle collides with star
@@ -468,19 +451,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Start shield timer
             shieldTimerInterval()
             
-//            let shieldLineSizeCounter = (self.shieldTimeline?.size.width)! / self.shieldCounter
-//            // Start shield timer
-//            shieldTimer.startTimer(withInterval: 1.0) {
-//                
-//                self.startShieldTimer()
-//                self.shieldTimeline?.size.width -= shieldLineSizeCounter
-//                
-//                if (self.shieldCounter == 0){
-//                    
-//                    self.shieldLine?.isHidden = true
-//                    self.isShield = false
-//                }
-//            }
         }
         
         // If circle collides with teleports
@@ -578,6 +548,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             nodeA?.name == "teleport2" || nodeB?.name == "teleport2" {
             
             onTeleport = true
+        }
+        
+        else if nodeA?.name == "obstacle" || nodeB?.name == "obstacle" {
+            
+            isObstacleCollideEnd = true
+        }
+    }
+    
+    // Kill player
+    func killPlayer(){
+    
+        // Pause game
+//        let pauseAction = SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.pause()])
+//        self.run(pauseAction)
+//        sleep(1)
+
+        // Live --
+        lives -= 1
+        
+        // Set lives number
+        UserDefaults.standard.set(lives, forKey: "lives")
+        
+        if lives > 0 {
+            
+            print("Start level \(currentLevel + 1) again")
+            
+            // Start level again
+            guard let scene = GameScene.loadLevel(currentLevel) else {
+                
+                print ("Level is missing?")
+                return
+            }
+            self.view?.presentScene(scene)
+            
+        } else {
+            
+            print("Start levels scene")
+            
+            isGameOver = true
+            
+            // Show levels scene
+            self.loadScene("Levels")
         }
     }
     

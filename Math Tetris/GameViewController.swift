@@ -18,23 +18,6 @@ class GameViewController: UIViewController {
 
         if let scene = MainMenu(fileNamed:"MainMenu") {
             
-            // Google analytics
-            
-            if (GAI.sharedInstance().defaultTracker) != nil {
-                #if DEBUG
-                    
-                    print("default tracker")
-                    
-                #endif
-            }
-            
-            //        let tracker = GAI.sharedInstance().defaultTracker
-            let tracker = GAI.sharedInstance().tracker(withTrackingId: "UA-103558946-1")
-            tracker?.set(kGAIScreenName, value: "Screen Name")
-            let builder = GAIDictionaryBuilder.createScreenView()
-            tracker?.send(builder?.build()! as! [NSObject : AnyObject])
-            
-            
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
