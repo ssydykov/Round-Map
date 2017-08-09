@@ -59,10 +59,12 @@ class Levels: SKScene, ChartboostDelegate {
     var liveNumberLabel: SKLabelNode!
     var liveStatusLabel: SKLabelNode!
     var gameOverDialog: SKSpriteNode!
+    var blackScreen: SKSpriteNode!
     
     // Variables
     var levels: Array<Level> = []
     let numberOfLevels = 11
+    let activityInd = UIActivityIndicatorView()
     
     // Labels
     var internetLabel: SKLabelNode!
@@ -85,6 +87,7 @@ class Levels: SKScene, ChartboostDelegate {
         goPremiumButton = self.childNode(withName: "//goPremiumButton") as! MSButtonNode
         watchAddButton = self.childNode(withName: "//watchAddButton") as! MSButtonNode
         internetLabel = self.childNode(withName: "//internetLabel") as! SKLabelNode
+        blackScreen = self.childNode(withName: "//blackScreen") as! SKSpriteNode
         
         // X Button clicked
         xButton.selectedHandler = {
@@ -104,11 +107,32 @@ class Levels: SKScene, ChartboostDelegate {
             
             if self.isInternetAvailable() {
                 
-                Chartboost.showRewardedVideo(CBLocationMainMenu)
+                // Unhide black background
+                self.blackScreen.isHidden = false
+                
+                // Add loading spiner
+                self.activityInd.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+                self.activityInd.startAnimating()
+                self.view?.addSubview(self.activityInd)
+                
+                // Turn off touches
+                self.view?.isUserInteractionEnabled = false
+                
+                // Hide label and dialog
                 self.gameOverDialog.isHidden = true
                 self.internetLabel.isHidden = true
                 
-            } else {
+                // Show reward video
+                Chartboost.showRewardedVideo(CBLocationMainMenu)
+                
+                // Cache video
+                self.cacheRewardVideo()
+            }
+            else if Chartboost.hasInterstitial(CBLocationMainMenu) {
+                
+                Chartboost.showInterstitial(CBLocationMainMenu)
+            }
+            else {
                 
                 self.internetLabel.isHidden = false
             }
@@ -121,14 +145,18 @@ class Levels: SKScene, ChartboostDelegate {
         rightButton.selectedHandler = {
             
             print("Right arrow clicked")
-            self.cameraNode.position.x += 568
+            
+            let action = SKAction.moveTo(x: 568, duration: 0.3)
+            self.cameraNode.run(action)
         }
         
         // Left arrow button is clicked
         leftButton.selectedHandler = {
             
             print("Left arrow clicked")
-            self.cameraNode.position.x -= 568
+            
+            let action = SKAction.moveTo(x: 0, duration: 0.3)
+            self.cameraNode.run(action)
         }
         
         // Add button is clicked
@@ -412,10 +440,35 @@ class Levels: SKScene, ChartboostDelegate {
     // Did finish watching reward video
     func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
         
+        // Stop spiner
+        stopSpiner()
+        
         lives += Int(reward)
         
         // Save lives number
         UserDefaults.standard.set(lives, forKey: "lives")
+    }
+    
+    // Reward video closed
+    func didCloseRewardedVideo(location: String!) {
+    
+        // Stop spiner
+        stopSpiner()
+    }
+    
+    // Stop spiner
+    func stopSpiner() {
+        
+        print("Display ad video")
+        
+        // Unhide black background
+        self.blackScreen.isHidden = true
+        
+        // Stop loading spiner
+        self.activityInd.stopAnimating()
+        
+        // Turn on touches
+        self.view?.isUserInteractionEnabled = true
     }
     
     func trackScreenView() {
@@ -423,6 +476,12 @@ class Levels: SKScene, ChartboostDelegate {
         let tracker = GAI.sharedInstance().tracker(withTrackingId: "UA-103558946-1")
         tracker?.set(kGAIScreenName, value: "Levels")
         tracker?.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject]?)
+    }
+    
+    func cacheRewardVideo(){
+        
+        Chartboost.cacheInterstitial(CBLocationMainMenu);
+        Chartboost.cacheRewardedVideo(CBLocationMainMenu);
     }
     
     func isInternetAvailable() -> Bool
