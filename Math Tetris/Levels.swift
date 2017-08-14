@@ -53,6 +53,7 @@ class Levels: SKScene, ChartboostDelegate {
     var xButton: MSButtonNode!
     var goPremiumButton: MSButtonNode!
     var watchAddButton: MSButtonNode!
+    var restoreButton: MSButtonNode!
     
     // Nodes
     var cameraNode: SKCameraNode!
@@ -73,6 +74,10 @@ class Levels: SKScene, ChartboostDelegate {
         
         trackScreenView()
         
+        // In app
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseNotification(_:)),
+            name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: nil)
+        
         // Initialize variables
         rightButton = self.childNode(withName: "//rightButton") as! MSButtonNode
         leftButton = self.childNode(withName: "//leftButton") as! MSButtonNode
@@ -88,6 +93,7 @@ class Levels: SKScene, ChartboostDelegate {
         watchAddButton = self.childNode(withName: "//watchAddButton") as! MSButtonNode
         internetLabel = self.childNode(withName: "//internetLabel") as! SKLabelNode
         blackScreen = self.childNode(withName: "//blackScreen") as! SKSpriteNode
+        restoreButton = self.childNode(withName: "//restoreButton") as! MSButtonNode
         
         // X Button clicked
         xButton.selectedHandler = {
@@ -99,7 +105,42 @@ class Levels: SKScene, ChartboostDelegate {
         goPremiumButton.selectedHandler = {
             
             // Link to paid version
+            
+            // Unhide black background
+            self.blackScreen.isHidden = false
+            
+            // Add loading spiner
+            self.activityInd.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+            self.activityInd.startAnimating()
+            self.view?.addSubview(self.activityInd)
+            
+            // Turn off touches
+            self.view?.isUserInteractionEnabled = false
+            
+            // Hide label and dialog
+            self.gameOverDialog.isHidden = true
+            self.internetLabel.isHidden = true
+            
+            
+            IAPProducts.store.requestProducts{success, productArray in
+                
+                if success && productArray != nil && productArray!.count > 0 {
+                    let product = productArray![0]
+                    
+                    //if non then, direct to the sales page
+                    IAPProducts.store.buyProduct(product)
+                    
+                } else {
+                    
+                    self.stopSpiner()
+                }
+            }
+        }
         
+        // Restore button clicked
+        restoreButton.selectedHandler = {
+            
+            IAPProducts.store.restorePurchases()
         }
         
         // Watch add button clicked
@@ -456,6 +497,10 @@ class Levels: SKScene, ChartboostDelegate {
         stopSpiner()
     }
     
+    func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
+        print("Failed to load rewarded video: \(error)")
+    }
+    
     // Stop spiner
     func stopSpiner() {
         
@@ -482,6 +527,13 @@ class Levels: SKScene, ChartboostDelegate {
         
         Chartboost.cacheInterstitial(CBLocationMainMenu);
         Chartboost.cacheRewardedVideo(CBLocationMainMenu);
+    }
+    
+    func handlePurchaseNotification(_ notification: Notification) {
+        
+        // Activate premium
+        stopSpiner()
+        
     }
     
     func isInternetAvailable() -> Bool

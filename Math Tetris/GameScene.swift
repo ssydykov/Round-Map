@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shieldTimeline: SKSpriteNode?
     var needles: SKSpriteNode?
     var exit: SKSpriteNode!
+    var tutorialDialog: SKSpriteNode?
     
     // Buttons
     var nextLevelButton: MSButtonNode!
@@ -100,6 +101,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shieldTimeline = childNode(withName: "//shieldTimeline") as? SKSpriteNode
         needles = childNode(withName: "//needlesBody") as? SKSpriteNode
         emitter.targetNode = scene
+        tutorialDialog = childNode(withName: "//tutorialDialog") as? SKSpriteNode
+        
+        // Is first time
+        // Get stored levels
+        if let data = UserDefaults.standard.object(forKey: "levels") as? Data {
+            if let storedData = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Level] {
+                
+                if !storedData[1].status {
+                    
+                    tutorialDialog!.isHidden = false
+                } 
+            }
+        }
         
         // Set lives number label
         print("Live number is \(lives)")
@@ -210,6 +224,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Calls when touch begins
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
+        // Close tutorial
+        if tutorialDialog != nil {
+            
+            tutorialDialog!.isHidden = true
+        }
+        
         let touch = touches.first!
         let location = touch.location(in: self)
         let nodeAtPoint = atPoint(location)
@@ -230,7 +250,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let action = SKAction.rotate(byAngle: CGFloat(-Double.pi * 30), duration: 60.0)
             map.run(action)
         }
-        
     }
     
     // Calls when touch ends

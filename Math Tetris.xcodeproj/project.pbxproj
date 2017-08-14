@@ -41,9 +41,12 @@
 		547DA3511F2A885F00F1178C /* Level_9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3501F2A885F00F1178C /* Level_9.sks */; };
 		547DA3531F2A898900F1178C /* Level_10.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3521F2A898900F1178C /* Level_10.sks */; };
 		547DA3551F2AAA6A00F1178C /* Level_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547DA3541F2AAA6A00F1178C /* Level_7.sks */; };
+		548292811F4161DA00857006 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 548292801F4161DA00857006 /* Tutorial.sks */; };
 		5488B6851F2BB5B1009550F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5488B6841F2BB5B1009550F5 /* GoogleService-Info.plist */; };
 		5488B68B1F2BB7DC009550F5 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5488B68A1F2BB7DC009550F5 /* Chartboost.framework */; };
 		548906631F071FE8002E6E47 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548906621F071FE8002E6E47 /* MSButtonNode.swift */; };
+		549502FD1F3EBCD100702DD9 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549502FC1F3EBCD100702DD9 /* IAPHelper.swift */; };
+		549502FF1F3EBD0200702DD9 /* IAPProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549502FE1F3EBD0200702DD9 /* IAPProducts.swift */; };
 		549B46D11F103FEF001953FF /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B46D01F103FEF001953FF /* Levels.swift */; };
 		54A599C41F1E6E5B003C099F /* PauseDialog.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C31F1E6E5B003C099F /* PauseDialog.sks */; };
 		54A599C61F1E85FA003C099F /* Level_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54A599C51F1E85FA003C099F /* Level_3.sks */; };
@@ -93,10 +96,13 @@
 		547DA3501F2A885F00F1178C /* Level_9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_9.sks; sourceTree = "<group>"; };
 		547DA3521F2A898900F1178C /* Level_10.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_10.sks; sourceTree = "<group>"; };
 		547DA3541F2AAA6A00F1178C /* Level_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_7.sks; sourceTree = "<group>"; };
+		548292801F4161DA00857006 /* Tutorial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tutorial.sks; sourceTree = "<group>"; };
 		5488B6841F2BB5B1009550F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Math Tetris/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5488B68A1F2BB7DC009550F5 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		5489065E1F0708F5002E6E47 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		548906621F071FE8002E6E47 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		549502FC1F3EBCD100702DD9 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		549502FE1F3EBD0200702DD9 /* IAPProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPProducts.swift; sourceTree = "<group>"; };
 		549B46D01F103FEF001953FF /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		54A599C31F1E6E5B003C099F /* PauseDialog.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PauseDialog.sks; sourceTree = "<group>"; };
 		54A599C51F1E85FA003C099F /* Level_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level_3.sks; sourceTree = "<group>"; };
@@ -178,9 +184,12 @@
 				54A599C31F1E6E5B003C099F /* PauseDialog.sks */,
 				546868E21F0D864600565334 /* EndDialog.sks */,
 				5409A9E21F280788005E613A /* WatchAddDialog.sks */,
+				548292801F4161DA00857006 /* Tutorial.sks */,
 				546868DC1F0AAC6F00565334 /* Exit.sks */,
 				546ABD361F06C820002F69A7 /* GameScene.swift */,
 				549B46D01F103FEF001953FF /* Levels.swift */,
+				549502FC1F3EBCD100702DD9 /* IAPHelper.swift */,
+				549502FE1F3EBD0200702DD9 /* IAPProducts.swift */,
 				541383821F103A4B005D982C /* MainMenu.swift */,
 				5413837E1F10333B005D982C /* Level.swift */,
 				54D499D91F31AED10088888E /* PlayerTrail.sks */,
@@ -290,6 +299,7 @@
 				5402857D1F2A7E26000DBE0E /* Level_11.sks in Resources */,
 				546ABD331F06C820002F69A7 /* Level_0.sks in Resources */,
 				5488B6851F2BB5B1009550F5 /* GoogleService-Info.plist in Resources */,
+				548292811F4161DA00857006 /* Tutorial.sks in Resources */,
 				546ABD3E1F06C820002F69A7 /* Assets.xcassets in Resources */,
 				546868DD1F0AAC6F00565334 /* Exit.sks in Resources */,
 				54A599C81F1E89D8003C099F /* Level_4.sks in Resources */,
@@ -366,6 +376,8 @@
 				549B46D11F103FEF001953FF /* Levels.swift in Sources */,
 				541383831F103A4B005D982C /* MainMenu.swift in Sources */,
 				546ABD391F06C820002F69A7 /* GameViewController.swift in Sources */,
+				549502FF1F3EBD0200702DD9 /* IAPProducts.swift in Sources */,
+				549502FD1F3EBCD100702DD9 /* IAPHelper.swift in Sources */,
 				546ABD311F06C820002F69A7 /* AppDelegate.swift in Sources */,
 				542344951F16CD7800AD1B08 /* TimerModel.swift in Sources */,
 				5413837F1F10333B005D982C /* Level.swift in Sources */,
