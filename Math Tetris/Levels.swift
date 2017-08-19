@@ -12,6 +12,7 @@ import SystemConfiguration
 import Google
 
 // Variables
+var superUser = false
 var isGameOver = false
 var gameCompleted = false
 var counter = 5 * 60
@@ -19,6 +20,7 @@ var currentLevel: Int = 0
 var lives: Int = 10
 var isTimer: Bool = false
 var timerText: String = ""
+let numberOfLevels = 11
 let timer = TimerModel.sharedTimer
 
 // Method for timer
@@ -61,10 +63,10 @@ class Levels: SKScene, ChartboostDelegate {
     var liveStatusLabel: SKLabelNode!
     var gameOverDialog: SKSpriteNode!
     var blackScreen: SKSpriteNode!
+    var levelsCompletedDialog: SKSpriteNode!
     
     // Variables
     var levels: Array<Level> = []
-    let numberOfLevels = 11
     let activityInd = UIActivityIndicatorView()
     
     // Labels
@@ -94,6 +96,7 @@ class Levels: SKScene, ChartboostDelegate {
         internetLabel = self.childNode(withName: "//internetLabel") as! SKLabelNode
         blackScreen = self.childNode(withName: "//blackScreen") as! SKSpriteNode
         restoreButton = self.childNode(withName: "//restoreButton") as! MSButtonNode
+        levelsCompletedDialog = self.childNode(withName: "//levelsCompletedDialog") as! SKSpriteNode
         
         // X Button clicked
         xButton.selectedHandler = {
@@ -103,8 +106,6 @@ class Levels: SKScene, ChartboostDelegate {
         
         // Go premium button clicked
         goPremiumButton.selectedHandler = {
-            
-            // Link to paid version
             
             // Unhide black background
             self.blackScreen.isHidden = false
@@ -228,6 +229,10 @@ class Levels: SKScene, ChartboostDelegate {
                 // Get lives number
                 lives = UserDefaults.standard.integer(forKey: "lives")
                 
+                // Is Super User?
+                superUser = UserDefaults.standard.bool(forKey: "superuser")
+//                superUser = true
+                
                 print("Data came from storage")
                 
                 // If lives equals 0
@@ -259,11 +264,14 @@ class Levels: SKScene, ChartboostDelegate {
             // Set lives number
             UserDefaults.standard.set(lives, forKey: "lives")
             
+            // Set superuser
+            UserDefaults.standard.set(superUser, forKey: "superuser")
+            
             print("Levels and lives are saved")
         }
         
         // If game over show dialog
-        if isGameOver {
+        if isGameOver && !superUser {
             
             gameOverDialog.isHidden = false
         }
@@ -272,7 +280,12 @@ class Levels: SKScene, ChartboostDelegate {
         if gameCompleted {
             
             // Show completed message
+            print("All levels completed!")
+            
+            levelsCompletedDialog.isHidden = false
         }
+        
+        print("Super user is \(superUser)")
         
         // Show list of levels
         showList()
@@ -359,7 +372,13 @@ class Levels: SKScene, ChartboostDelegate {
         
         print("Show lives")
         
-        if (lives < 10 && !isTimer){
+        if superUser {
+          
+            liveNumberLabel.text = "∞"
+            liveStatusLabel.text = "FULL"
+            addButton.isHidden = true
+            
+        } else if (lives < 10 && !isTimer){
             
             print("Timer is start, lives = \(lives)")
             
@@ -409,16 +428,19 @@ class Levels: SKScene, ChartboostDelegate {
     // Update function
     override func update(_ currentTime: TimeInterval) {
      
-        if (isTimer && lives < 10) {
+        if !superUser {
             
-            liveStatusLabel.text = timerText
+            if (isTimer && lives < 10) {
+                
+                liveStatusLabel.text = timerText
+            }
+            else if (lives >= 10){
+                
+                // Set lives
+                liveStatusLabel.text = "FULL"
+            }
+            liveNumberLabel.text = String(lives)
         }
-        else if (lives >= 10){
-            
-            // Set lives
-            liveStatusLabel.text = "FULL"
-        }
-        liveNumberLabel.text = String(lives)
     }
     
     // Calls when touch begins
@@ -440,7 +462,7 @@ class Levels: SKScene, ChartboostDelegate {
                 let status = levels[item].status
                 
                 // Check is level open
-                if status && lives > 0 {
+                if status && (lives > 0 || superUser) {
                     
                     currentLevel = item
                     self.loadScene("Level_\(item)")
@@ -451,6 +473,9 @@ class Levels: SKScene, ChartboostDelegate {
                 }
             }
         }
+        
+        // Close levels completed dialog if is it in view
+        levelsCompletedDialog.isHidden = true
     }
     
     // Load scene
@@ -534,6 +559,11 @@ class Levels: SKScene, ChartboostDelegate {
         // Activate premium
         stopSpiner()
         
+        superUser = true
+        // Set superuser
+        UserDefaults.standard.set(superUser, forKey: "superuser")
+        
+        self.loadScene("Levels")
     }
     
     func isInternetAvailable() -> Bool

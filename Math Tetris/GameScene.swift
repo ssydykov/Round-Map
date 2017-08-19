@@ -116,8 +116,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Set lives number label
-        print("Live number is \(lives)")
-        liveNumberLabel.text = String(lives)
+        if superUser {
+            
+            liveNumberLabel.text = "∞"
+            
+        } else {
+            
+            print("Live number is \(lives)")
+            liveNumberLabel.text = String(lives)
+        }
         
         // Call timer for flashing obstacle if it is in the scene
         if obstacle != nil {
@@ -144,13 +151,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Start next level")
         
             currentLevel += 1
-            guard let scene = GameScene.loadLevel(currentLevel) else {
-
-                print ("Level is missing?")
-                return
+            if currentLevel > numberOfLevels {
+                
+                self.loadScene("Levels")
+                
+            } else {
+                
+                guard let scene = GameScene.loadLevel(currentLevel) else {
+                    
+                    print ("Level is missing?")
+                    return
+                }
+                view.presentScene(scene)
             }
-            
-            view.presentScene(scene)
         }
         
         // Restart button clicked
@@ -589,7 +602,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Set lives number
         UserDefaults.standard.set(lives, forKey: "lives")
         
-        if lives > 0 {
+        if (lives > 0 || superUser) {
             
             print("Start level \(currentLevel + 1) again")
             
